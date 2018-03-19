@@ -6,6 +6,7 @@ public class Board {
     public final Integer row;
     public final Integer cols;
     public final BoardStates [][] fetchContent;
+    private Ship[] ships;
 
 
 
@@ -37,12 +38,20 @@ public class Board {
         return tempFetch;
     }
 
-    public Board fetchesCoordenate(final Integer row, final Integer cols){
+
+    /**
+     *
+     * @param row
+     * @param cols
+     * @return new Board with the fetchContent array modified.
+     *
+     */
+    public Board fetchesCoordenate(final Integer row, final Integer cols, BoardStates state){
         BoardStates[][] content = new BoardStates[this.row][this.cols];
         for(int i = 0; i < this.row; i++){
             for(int j = 0; j < this.cols; j++){
                 if(i == row && j == cols){
-                    content[i][j] = BoardStates.revealedButNoShip;
+                    content[i][j] = state;
                 }else{
                     content[i][j] = BoardStates.notRevealed;
                 }
