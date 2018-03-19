@@ -1,12 +1,16 @@
 package com.jetbrains;
 
+
+
+import java.util.Arrays;
+
 public class Board {
 
 
     public final Integer row;
     public final Integer cols;
     public final BoardStates [][] fetchContent;
-    private Ship[] ships;
+
 
 
 
@@ -23,6 +27,9 @@ public class Board {
      */
     private Board(BoardStates[][] fetchContent){
         this.fetchContent = fetchContent;
+
+        //System.out.println(Arrays.deepToString(this.fetchContent));
+
         this.row = this.fetchContent.length;
         this.cols = this.fetchContent[0].length;
     }
@@ -53,10 +60,12 @@ public class Board {
                 if(i == row && j == cols){
                     content[i][j] = state;
                 }else{
-                    content[i][j] = BoardStates.notRevealed;
+                    content[i][j] = this.fetchContent[i][j];
                 }
             }
         }
+        //System.out.println(Arrays.deepToString(content));
+
         return new Board(content);
     }
 

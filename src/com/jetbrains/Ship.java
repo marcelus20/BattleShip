@@ -51,7 +51,7 @@ public class Ship {
 
 
             }
-        System.out.println(Arrays.deepToString(tempPosition));
+        //System.out.println(Arrays.deepToString(tempPosition));
         return tempPosition;
     }
 
