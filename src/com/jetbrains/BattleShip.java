@@ -16,6 +16,17 @@ public class BattleShip {
                 new Ship(board.row, board.cols), new Ship(board.row, board.cols), new Ship(board.row, board.cols)
         };
         this.shipsReservedCoordenates = initShipsReservedCoordnates();
+        //this.shipsReservedCoordenates =new Integer[][]{{1,3},{1,4},{1,5}};
+
+    }
+
+    public Boolean checkIfHitsShip(final Integer row, final Integer col){
+        for(Integer[] coordenates : this.shipsReservedCoordenates){
+            if(coordenates[0] == row && coordenates[1]== col){
+                return true;
+            }
+        }
+        return false;
     }
 
     private Integer[][] initShipsReservedCoordnates(){
