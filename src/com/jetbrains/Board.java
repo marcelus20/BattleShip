@@ -71,10 +71,17 @@ public class Board {
 
     @Override
     public String toString() {
-        String board = "";
+        String board = "  | ";
         String item = "";
 
+        for(int i = 0; i < this.cols; i++){
+            board += i+ " | ";
+
+        }
+        board+="\n";
+
         for(int i = 0; i < this.row; i++){
+            board +=i+" ";
             board+="|";
             for(int j = 0; j < this.row; j++){
                 if(this.fetchContent[i][j] == BoardStates.notRevealed){
