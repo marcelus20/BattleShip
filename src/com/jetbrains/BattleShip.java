@@ -16,9 +16,10 @@ public class BattleShip {
 
 
     public  BattleShip(){
-        this.board = new Board(10,10);
+        this.board = new Board(20,20);
         this.ships = new Ship[]{
-                new Ship(board.row, board.cols), new Ship(board.row, board.cols), new Ship(board.row, board.cols)
+                new Ship(board.row, board.cols), new Ship(board.row, board.cols), new Ship(board.row, board.cols),
+                new Ship(board.row, board.cols)
         };
         this.shipsReservedCoordenates = initShipsReservedCoordnates();
 
@@ -29,23 +30,28 @@ public class BattleShip {
                         "marcelus20felipe@gmail.com"),
                 new Player("Sara",
                         26,
-                        "sarasimionirock@gmail.com")
+                        "sarasimionirock@gmail.com"),
+                new Player("Leandro",
+                        27,
+                        "blah@gmail.com"
+
+                )
 
         };
         isFinished = false;
 
-        System.out.println(this.board);
+        printBoard();
         while(!this.isFinished){
 
 
             for(Player currentPlayer : this.players){
 
-                System.out.println(this.board);
+                printBoard();
                 Integer row;
                 Integer col;
                 do{
-                    row = new Random().nextInt(10);
-                    col = new Random().nextInt(10);
+                    row = new Random().nextInt(this.board.row);
+                    col = new Random().nextInt(this.board.cols);
                 }while(checkIfCordenateIsRevealed(row, col));
 
 
@@ -81,7 +87,7 @@ public class BattleShip {
 
             }
         }
-        System.out.println(this.board);
+        printBoard();
         showRank();
 
 
@@ -101,9 +107,6 @@ public class BattleShip {
     public Boolean checkIfHitsShip(final Integer row, final Integer col){
         for(Integer[] coordenates : this.shipsReservedCoordenates){
             if(coordenates[0] == row && coordenates[1]== col){
-
-
-
                 this.board = this.board.fetchesCoordenate(row, col, BoardStates.revealedAndThereIsShip);
                 //System.out.println(this.board);
                 return true;
@@ -172,6 +175,10 @@ public class BattleShip {
             System.out.println();
             System.out.println();
         }
+    }
+
+    private void printBoard(){
+        System.out.println(this.board);
     }
 
 
