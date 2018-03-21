@@ -1,9 +1,11 @@
 package com.jetbrains;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class BattleShip {
@@ -12,11 +14,19 @@ public class BattleShip {
     private final Ship[] ships;
     private final Integer[][] shipsReservedCoordenates;
     private Player[] players;
+    private Bots[] bots;
     private Boolean isFinished;
 
 
     public  BattleShip(){
-        this.board = new Board(20,20);
+        SystemTools sys = new SystemTools();
+        welcome();
+        final Integer boardRow = Integer.parseInt(sys.getInput("Enter the number of Rows this board will have: ",
+                "([1][0-9])|[20]", "Just numbers between 10 and 20"));
+        final Integer boardColumn = Integer.parseInt(sys.getInput("Enter the number of Rows this board will have: ",
+                "([1][0-9])|[20]", "Just numbers between 10 and 20"));
+
+        this.board = new Board(boardRow,boardColumn);
         this.ships = new Ship[]{
                 new Ship(board.row, board.cols), new Ship(board.row, board.cols), new Ship(board.row, board.cols),
                 new Ship(board.row, board.cols)
@@ -43,21 +53,55 @@ public class BattleShip {
 
         gameSetup();
         printBoard();
+
+        List<Player> botsAndPLayers = new ArrayList<Player>();
+
+        for(Player p : this.players){
+            botsAndPLayers.add(p);
+        }
+        if(this.bots != null){
+            for(Bots bot : this.bots){
+                botsAndPLayers.add(bot);
+
+            }
+        }
+
+
+        System.out.println(botsAndPLayers.size());
+
         while(!this.isFinished){
 
 
-            for(Player currentPlayer : this.players){
+            for(Player currentPlayer : botsAndPLayers){
+
+                sys.printTabledArray(new String[]{"That's "+currentPlayer.name+" turn"});
 
                 printBoard();
                 Integer row;
                 Integer col;
-                do{
-                    row = new Random().nextInt(this.board.row);
-                    col = new Random().nextInt(this.board.cols);
-                }while(checkIfCordenateIsRevealed(row, col));
+
+                if(currentPlayer instanceof Bots){
+                    do{
+                        row = new Random().nextInt(this.board.row);
+                        col = new Random().nextInt(this.board.cols);
+                    }while(checkIfCordenateIsRevealed(row, col));
+                }else{
+                    do{
+                        do{row = Integer.parseInt(sys.getInput("ROW: ", "[0-9]+", "just numbers"));
+                            col = Integer.parseInt(sys.getInput("COLUMN: ", "[0-9]+", "just numbers"));
+                            if(row > this.board.row || col > this.board.cols){
+                                sys.printTabledArray(new String[]{"insert value from 0 until "+String.valueOf(this.board.row-1)+
+                                "for row and values from 0 until "+String.valueOf(this.board.row-1)+"for columns"});
+                            }
+                        }while(row > this.board.row || col > this.board.cols);
+
+                    }while(checkIfCordenateIsRevealed(row, col));
+                }
+
 
 
                 Integer[] coordenate = currentPlayer.choosesCoordenate(row, col);
+                System.out.println(currentPlayer.name+" chooses coordenates ("+row+","+col+")");
                 if(checkIfHitsShip(coordenate)){
                     System.out.println("Wow, how amazing, that was a Hit!");
 
@@ -85,6 +129,8 @@ public class BattleShip {
                 if(shipHitsCounter == this.ships.length*this.ships[0].shipLen){
                     isFinished = true;
                 }
+
+                sys.SystemPause();
 
 
             }
@@ -185,25 +231,27 @@ public class BattleShip {
 
     private void gameSetup(){
         SystemTools sys = new SystemTools();
-        welcome();
+
 
         System.out.println("Choose the amount of players in this game: MAX 4");
         final Integer player = Integer.parseInt(sys.getInput("No of players",
                 "[1-4]", "PLease, type numbers between 1 and 4"));
 
+        Integer botAmouunt = 0;
         if(player< 4){
             System.out.println("Want to add bots to remaining players slots?");
             String ans = sys.getInput("Y/N", "[ynYN]", "Type just Y or N");
             if(ans.toLowerCase().equals("y")){
                 System.out.println("How many bots?");
                 String[] opt;
-                Integer botAmouunt = 0;
+
                 if(player == 1){
                     opt = new String[]{"1 Bot", "2 bots", "3 bots"};
                     sys.printTabledArray(opt);
                     botAmouunt = Integer.parseInt(sys.getInput(
                             "OPTION:", "[1-3]","Just numbers between 1 and 3."));
-                    System.out.println("set 3 bots");
+
+
                 }else if (player == 2){
                     opt = new String[]{"1 bot", "2 bots"};
 
@@ -232,6 +280,11 @@ public class BattleShip {
 
         for(int i = 0; i < this.players.length; i++){
 
+            if(i == 0){
+                System.out.println("First Player:");
+            }else{
+                System.out.println("Next player:");
+            }
             this.players[i] = new Player(
                     sys.getInput("What's your name?","[a-zA-Z]+","just alphabet characters!"),
                     Integer.parseInt(sys.getInput("Age: ", "[1-9]+", "Just numbers!")),
@@ -240,6 +293,26 @@ public class BattleShip {
                             "Invalid e-mail")
             );
         }
+        switch (botAmouunt){
+
+            case 1 : this.bots = new Bots[1];break;
+            case 2 : this.bots = new Bots[2];break;
+            case 3 : this.bots = new Bots[3];break;
+        }
+        //System.out.println(this.bots.length);
+
+        if(botAmouunt!=0){
+            for(int i = 0; i < this.bots.length; i++){
+
+                this.bots[i] = new Bots();
+                System.out.println("Added "+this.bots[i].name+"(BOT)");
+
+            }
+        }
+
+        sys.SystemPause();
+
+
 
 
 

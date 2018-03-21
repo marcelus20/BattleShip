@@ -21,5 +21,7 @@ public class Main {
         /*
         Ship ship = new Ship(10,10);
         */
+        //Bots a = new Bots();
+        //System.out.println(a.getClass());
     }
 }

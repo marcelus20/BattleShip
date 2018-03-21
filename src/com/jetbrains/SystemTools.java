@@ -3,6 +3,7 @@ package com.jetbrains;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 public class SystemTools {
 
@@ -25,13 +26,13 @@ public class SystemTools {
     }
 
     public void SystemPause(){
-        System.out.println("Press enter to continue;");
+        printTabledArray(new String[]{"Press enter to continue."});
         getInput("","","");
     }
 
     public void printTabledArray(final String[] arr){
         //DEFINING WIDTH OF TABLE BASED ON THE BIGEST STRING ELEMENT IN THE ARRAY:
-        final Integer width = getSizeOfBiggestArrayElement(arr)+2;
+        final Integer width = 50;
         System.out.println("+"+strMultiply("-", width)+"+");
         for(final String sentence : arr){
             System.out.println("|"+
@@ -59,6 +60,15 @@ public class SystemTools {
             text+=str;
         }
         return text;
+    }
+
+    public String genRandomName(){
+        String[] listOfNames = new String[]{
+                "Raphus Miwe","Daleanix Zazorie","Korla Impira", "Himel Sevinjoh", "Adia Embex",
+                "Liversei Laugath", "Antriel Hani", "Crona Meles", "Nilor Asthon", "Glon Umel",
+                "Phor Skya", "Derulta Ancon", "Xolian Romon", "Romishion Abys", "Fawyr Huweloon"
+        };
+        return listOfNames[new Random().nextInt(listOfNames.length)];
     }
 
 }
