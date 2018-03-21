@@ -21,10 +21,10 @@ public class BattleShip {
     public  BattleShip(){
         SystemTools sys = new SystemTools();
         welcome();
-        final Integer boardRow = Integer.parseInt(sys.getInput("Enter the number of Rows this board will have: ",
-                "([1][0-9])|[20]", "Just numbers between 10 and 20"));
-        final Integer boardColumn = Integer.parseInt(sys.getInput("Enter the number of Rows this board will have: ",
-                "([1][0-9])|[20]", "Just numbers between 10 and 20"));
+        final Integer boardRow = Integer.parseInt(sys.getInput("Enter the number of ROWS this board will have: ",
+                "([1][0-9])|([2][0])", "Just numbers between 10 and 20"));
+        final Integer boardColumn = Integer.parseInt(sys.getInput("Enter the number of COLUMNS this board will have: ",
+                "([1][0-9])|[2][0]", "Just numbers between 10 and 20"));
 
         this.board = new Board(boardRow,boardColumn);
         this.ships = new Ship[]{
@@ -90,10 +90,14 @@ public class BattleShip {
                         do{row = Integer.parseInt(sys.getInput("ROW: ", "[0-9]+", "just numbers"));
                             col = Integer.parseInt(sys.getInput("COLUMN: ", "[0-9]+", "just numbers"));
                             if(row > this.board.row || col > this.board.cols){
-                                sys.printTabledArray(new String[]{"insert value from 0 until "+String.valueOf(this.board.row-1)+
-                                "for row and values from 0 until "+String.valueOf(this.board.row-1)+"for columns"});
+                                sys.printTabledArray("insert value from 0 until "+String.valueOf(this.board.row-1)+
+                                "for row and values from 0 until "+String.valueOf(this.board.row-1)+"for columns");
                             }
+
                         }while(row > this.board.row || col > this.board.cols);
+                        if(checkIfCordenateIsRevealed(row, col)){
+                            sys.printTabledArray("The row "+ row + "and column "+col+" have been fetched already!");
+                        }
 
                     }while(checkIfCordenateIsRevealed(row, col));
                 }

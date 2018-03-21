@@ -93,11 +93,11 @@ public class Board {
             }
 
             board+="|";
-            for(int j = 0; j < this.row; j++){
+            for(int j = 0; j < this.cols; j++){
                 if(this.fetchContent[i][j] == BoardStates.notRevealed){
                     item = " _ |";
                 }else if(this.fetchContent[i][j] == BoardStates.revealedButNoShip){
-                    item = " * |";
+                    item = " M |";
                 }else{
                     item = " H |";
                 }

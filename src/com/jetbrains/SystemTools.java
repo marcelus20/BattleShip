@@ -44,6 +44,10 @@ public class SystemTools {
         System.out.println("+"+strMultiply("-", width)+"+");
     }
 
+    public void printTabledArray(final String str){
+        printTabledArray(new String[]{str});
+    }
+
     private Integer getSizeOfBiggestArrayElement(final String[] arr){
         Integer biggest = 0;
         for(String element : arr){
