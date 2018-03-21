@@ -11,7 +11,7 @@ public class BattleShip {
     public Board board;
     private final Ship[] ships;
     private final Integer[][] shipsReservedCoordenates;
-    private final Player[] players;
+    private Player[] players;
     private Boolean isFinished;
 
 
@@ -23,7 +23,7 @@ public class BattleShip {
         };
         this.shipsReservedCoordenates = initShipsReservedCoordnates();
 
-
+/*
         this.players = new Player[]{
                 new Player("Felipe",
                         25,
@@ -38,8 +38,10 @@ public class BattleShip {
                 )
 
         };
+        */
         isFinished = false;
 
+        gameSetup();
         printBoard();
         while(!this.isFinished){
 
@@ -179,6 +181,80 @@ public class BattleShip {
 
     private void printBoard(){
         System.out.println(this.board);
+    }
+
+    private void gameSetup(){
+        SystemTools sys = new SystemTools();
+        welcome();
+
+        System.out.println("Choose the amount of players in this game: MAX 4");
+        final Integer player = Integer.parseInt(sys.getInput("No of players",
+                "[1-4]", "PLease, type numbers between 1 and 4"));
+
+        if(player< 4){
+            System.out.println("Want to add bots to remaining players slots?");
+            String ans = sys.getInput("Y/N", "[ynYN]", "Type just Y or N");
+            if(ans.toLowerCase().equals("y")){
+                System.out.println("How many bots?");
+                String[] opt;
+                Integer botAmouunt = 0;
+                if(player == 1){
+                    opt = new String[]{"1 Bot", "2 bots", "3 bots"};
+                    sys.printTabledArray(opt);
+                    botAmouunt = Integer.parseInt(sys.getInput(
+                            "OPTION:", "[1-3]","Just numbers between 1 and 3."));
+                    System.out.println("set 3 bots");
+                }else if (player == 2){
+                    opt = new String[]{"1 bot", "2 bots"};
+
+                    sys.printTabledArray(opt);
+                    botAmouunt = Integer.parseInt(sys.getInput(
+                            "OPTION:", "[1-3]","Just numbers between 1 and 2."));
+                    System.out.println("set 2 bots");
+                }else{
+                    botAmouunt = 1;
+                    System.out.println("Set 1 bot");
+                }
+
+            }
+        }
+
+        switch(player){
+            case 1 : this.players = new Player[1];
+            break;
+            case 2 : this.players = new Player[2];
+            break;
+            case 3 : this.players = new Player[3];
+            break;
+            case 4 : this.players = new Player[4];
+            break;
+        }
+
+        for(int i = 0; i < this.players.length; i++){
+
+            this.players[i] = new Player(
+                    sys.getInput("What's your name?","[a-zA-Z]+","just alphabet characters!"),
+                    Integer.parseInt(sys.getInput("Age: ", "[1-9]+", "Just numbers!")),
+                    sys.getInput("E-mail: ",
+                            "[a-zA-Z0-9]+[._a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]*[a-zA-Z]*@[a-zA-Z0-9]{2,8}.[a-zA-Z.]{2,6}",
+                            "Invalid e-mail")
+            );
+        }
+
+
+
+    }
+
+
+    private void welcome(){
+        String[] welcomeMsg = new String[]{
+                "Welcome",
+                "to the ",
+                "Battleship",
+                "Game!"
+        };
+        SystemTools sys = new SystemTools();
+        sys.printTabledArray(welcomeMsg);
     }
 
 

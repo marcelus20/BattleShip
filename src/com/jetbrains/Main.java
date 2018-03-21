@@ -15,6 +15,8 @@ public class Main {
         System.out.println(board);
         */
         new BattleShip();
+        //SystemTools sys = new SystemTools();
+        //sys.printTabledArray(new String[]{"Felipe ", "Marcelus ", "Mantovani"});
 
         /*
         Ship ship = new Ship(10,10);
