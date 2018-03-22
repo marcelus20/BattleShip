@@ -1,12 +1,12 @@
 package com.jetbrains;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.jetbrains.components.Board;
+import com.jetbrains.components.Ship;
+import com.jetbrains.players.Bots;
+import com.jetbrains.players.Player;
+import com.jetbrains.tools.SystemTools;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class BattleShip {
 
@@ -27,28 +27,9 @@ public class BattleShip {
                 "([1][0-9])|[2][0]", "Just numbers between 10 and 20"));
 
         this.board = new Board(boardRow,boardColumn);
-        this.ships = new Ship[]{
-                new Ship(board.row, board.cols), new Ship(board.row, board.cols), new Ship(board.row, board.cols),
-                new Ship(board.row, board.cols)
-        };
+        this.ships = initShips();
         this.shipsReservedCoordenates = initShipsReservedCoordnates();
 
-/*
-        this.players = new Player[]{
-                new Player("Felipe",
-                        25,
-                        "marcelus20felipe@gmail.com"),
-                new Player("Sara",
-                        26,
-                        "sarasimionirock@gmail.com"),
-                new Player("Leandro",
-                        27,
-                        "blah@gmail.com"
-
-                )
-
-        };
-        */
         isFinished = false;
 
         gameSetup();
@@ -67,7 +48,7 @@ public class BattleShip {
         }
 
 
-        System.out.println(botsAndPLayers.size());
+
 
         while(!this.isFinished){
 
@@ -77,10 +58,22 @@ public class BattleShip {
                 sys.printTabledArray(new String[]{"That's "+currentPlayer.name+" turn"});
 
                 printBoard();
+                System.out.println("AMOUNT OF SHIPS TO BE DISCOVERED: "+this.ships.length);
                 Integer row;
                 Integer col;
 
-                if(currentPlayer instanceof Bots){
+
+                /*
+                * TO ENABLE AUTO GUESS MODE, EVEN FOR PLAYERS, JUST REPLACE
+                * THE "currentPlayer instanceof Bots" to "currentPlayer instanceof Player"
+                * ON THE LINE BELOW.
+                * IF AUTO GUESS MODE IS ON, SO IF THE LINE BELOW IS "currentPlayer instanceof Player",
+                * it is suggested to comment the line 128 that says: sys.SystemPause();
+                * That being so, there won't be any interruption and the com.jetbrains.components.game will finish quickly enough
+                * for you to see the score display straight away.
+                * */
+
+                if(currentPlayer instanceof Bots){//if(currentPlayer instanceof Player){
                     do{
                         row = new Random().nextInt(this.board.row);
                         col = new Random().nextInt(this.board.cols);
@@ -134,25 +127,36 @@ public class BattleShip {
                     isFinished = true;
                 }
 
-                sys.SystemPause();
+                sys.SystemPause();//COMMENT THIS LINE IF AUTO GUESS MODE IS ON!
 
 
             }
         }
         printBoard();
-        showRank();
+        showRank((ArrayList<Player>) botsAndPLayers);
 
 
-        /*
-        System.out.println(this.board);
-        for(int i = 0; i < this.board.row; i++){
-            for(int j = 0; j < this.board.cols; j++){
-                checkIfHitsShip(i,j);
+
+    }
+
+
+    private Ship[] initShips (){
+        final Integer numberOfShips = new Random().nextInt(5);
+        Ship[] tempShip = new Ship[numberOfShips];
+
+        String createdCoordenates = "";
+
+        for(int i = 0; i < numberOfShips; i++){
+            Ship ship = new Ship(this.board.row, this.board.cols);
+            while(createdCoordenates.contains(Arrays.deepToString(ship.position))){
+                ship = new Ship(this.board.row, this.board.cols);
             }
-        }
-        System.out.println(this.board);
+            createdCoordenates = Arrays.deepToString(ship.position);
 
-        */
+            tempShip[i] = ship;
+
+        }
+        return tempShip;
     }
 
 
@@ -210,14 +214,24 @@ public class BattleShip {
         }
     }
 
-    private void showRank() {
-        for(Player player: this.players){
+    private void showRank(ArrayList<Player> botsAndPLayers) {
+
+
+        for(Player player: botsAndPLayers){
+
             System.out.print("Name: ");
             System.out.println(player.name);
-            System.out.print("Age:");
-            System.out.println(player.age);
-            System.out.print("e_mail: ");
-            System.out.println(player.e_mail);
+            if(player instanceof Bots){
+                System.out.println("****** (BOT)******");
+            }
+
+            if(!(player instanceof Bots)){
+               System.out.print("Age:");
+                System.out.println(player.age);
+                System.out.print("e_mail: ");
+                System.out.println(player.e_mail);
+            }
+
             System.out.print("Total attempts:");
             System.out.println(player.getAttempts());
             System.out.print("Total Hits:");
@@ -237,7 +251,7 @@ public class BattleShip {
         SystemTools sys = new SystemTools();
 
 
-        System.out.println("Choose the amount of players in this game: MAX 4");
+        System.out.println("Choose the amount of players in this com.jetbrains.components.game: MAX 4");
         final Integer player = Integer.parseInt(sys.getInput("No of players",
                 "[1-4]", "PLease, type numbers between 1 and 4"));
 
@@ -306,9 +320,14 @@ public class BattleShip {
         //System.out.println(this.bots.length);
 
         if(botAmouunt!=0){
+            String botExistingNames="";
             for(int i = 0; i < this.bots.length; i++){
-
-                this.bots[i] = new Bots();
+                String name = sys.genRandomName();
+                while(botExistingNames.contains(name)){
+                    name = sys.genRandomName();
+                }
+                botExistingNames+=name+" ";
+                this.bots[i] = new Bots(name);
                 System.out.println("Added "+this.bots[i].name+"(BOT)");
 
             }

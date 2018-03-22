@@ -1,15 +1,15 @@
-package com.jetbrains;
+package com.jetbrains.components;
 
 
 
-import java.util.Arrays;
+import com.jetbrains.BoardStates;
 
 public class Board {
 
 
     public final Integer row;
     public final Integer cols;
-    public final BoardStates [][] fetchContent;
+    public final BoardStates[][] fetchContent;
 
 
 
@@ -97,7 +97,7 @@ public class Board {
                 if(this.fetchContent[i][j] == BoardStates.notRevealed){
                     item = " _ |";
                 }else if(this.fetchContent[i][j] == BoardStates.revealedButNoShip){
-                    item = " M |";
+                    item = " X |";
                 }else{
                     item = " H |";
                 }

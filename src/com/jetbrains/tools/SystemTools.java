@@ -1,4 +1,4 @@
-package com.jetbrains;
+package com.jetbrains.tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,8 +26,7 @@ public class SystemTools {
     }
 
     public void SystemPause(){
-        printTabledArray(new String[]{"Press enter to continue."});
-        getInput("","","");
+        getInput("Press enter to continue.","","");
     }
 
     public void printTabledArray(final String[] arr){
@@ -70,7 +69,11 @@ public class SystemTools {
         String[] listOfNames = new String[]{
                 "Raphus Miwe","Daleanix Zazorie","Korla Impira", "Himel Sevinjoh", "Adia Embex",
                 "Liversei Laugath", "Antriel Hani", "Crona Meles", "Nilor Asthon", "Glon Umel",
-                "Phor Skya", "Derulta Ancon", "Xolian Romon", "Romishion Abys", "Fawyr Huweloon"
+                "Phor Skya", "Derulta Ancon", "Xolian Romon", "Romishion Abys", "Fawyr Huweloon",
+                "Lewintrele Mori", "Haltal Deardyron", "Shis Adruor", "Edgemidana Shyruzio",
+                "Shaf Araza", "Karull Elindfin", "Alon Piriel", "Thar Yenlath", "Magi Beciant",
+                "Leoniantz Anater", "Fariene Alfaiano", "Nogna Gealynny", "Aegar Thunarions",
+                "Nadhil Phihan", "Adra Nerca", "Kivin Manastyn", "Thena Fenim", "Teanak Suron"
         };
         return listOfNames[new Random().nextInt(listOfNames.length)];
     }
