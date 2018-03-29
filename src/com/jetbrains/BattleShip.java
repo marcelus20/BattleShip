@@ -304,8 +304,10 @@ public class BattleShip {
                 System.out.println("Next player:");
             }
             this.players[i] = new Player(
+
                     sys.getInput("What's your name?","[a-zA-Z]+","just alphabet characters!"),
-                    Integer.parseInt(sys.getInput("Age: ", "[1-9]+", "Just numbers!")),
+
+                    getAge(),
                     sys.getInput("E-mail: ",
                             "[a-zA-Z0-9]+[._a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]*[a-zA-Z]*@[a-zA-Z0-9]{2,8}.[a-zA-Z.]{2,6}",
                             "Invalid e-mail")
@@ -353,6 +355,19 @@ public class BattleShip {
         sys.printTabledArray(welcomeMsg);
     }
 
+
+    private Integer getAge(){
+        Integer age = 0;
+        do{
+            age = Integer.parseInt(new SystemTools().getInput("What's your age?", "[0-9]+", "Just numbers"));
+            if(age <12 || age >=100){
+                System.out.println("Age should be over 12 years old and under 100");
+            }
+
+        }while(age <12 || age >=100);
+
+        return age;
+    }
 
 
 
