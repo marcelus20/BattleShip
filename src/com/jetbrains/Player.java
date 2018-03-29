@@ -81,6 +81,9 @@ public class Player {
     /**
      * This method is for the player to choose the coordenate he/she will choose to guess if
      * Ship will be revealed. it will return an Array of integers that represents the chosen coordenate
+     * @param row: the line in the board
+     * @param col: the col in the line
+     * @return the coordenate as an Array
      */
     public Integer[] choosesRowAndColumn(final Integer row, final Integer col){
         //RETURNING THE COORDENATE (ARRAY OF ROWS AND COLUMNS)
