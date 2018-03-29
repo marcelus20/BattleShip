@@ -4,20 +4,34 @@ import java.util.Arrays;
 
 public class Main {
 
+    final Player[] players;
+
+
+    Main(){
+        players = new Player[4];
+
+        for(int i = 0; i < 4; i++){
+            players[i] = new Player("", 0, "");
+
+        }
+
+        for(int i = 0; i < 4; i++){
+            players[i] = players[i].incrementHits().incrementMiss();
+
+
+        }
+        for(int i = 0; i < 4; i++){
+            System.out.println(players[0]);
+
+        }
+
+
+    }
+
+
     public static void main(String[] args) {
 	// write your code here
 
-        /*
-        Board board = new Board(10,10);
-        System.out.println(Arrays.deepToString(board.fetchContent));
-        board = board.fetchesCoordenate(1,5, BoardStates.revealedButNoShip);
-        System.out.println(Arrays.deepToString(board.fetchContent));
-        System.out.println(board);
-        */
-        new BattleShip();
-
-        /*
-        Ship ship = new Ship(10,10);
-        */
+        new Main();
     }
 }
