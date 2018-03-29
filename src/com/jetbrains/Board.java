@@ -21,6 +21,7 @@ public class Board {
     public final BoardStates[][] boardStates;
 
 
+
     /**
      * CONSTRUCTOR:
      */
@@ -28,6 +29,12 @@ public class Board {
         this.rows = rows;
         this.cols = cols;
         this.boardStates = initBoardStates();
+    }
+
+    private Board(final Integer rows, final Integer cols, final BoardStates[][] boardState){
+        this.rows = rows;
+        this.cols = cols;
+        this.boardStates = boardState;
     }
 
 
@@ -48,6 +55,20 @@ public class Board {
             }
         }
         return tempBoardStates;
+    }
+
+
+    /**
+     * This method is for updating one coordenate of the board. it will modify the element of the 2D Array
+     * in the boardStates attribute and the toString method will respond to this change.
+     */
+    public Board updateBoard(final Integer[] coordenate){
+
+        this.boardStates[Integer.parseInt(coordenate[0].toString())]
+                        [Integer.parseInt(coordenate[1].toString())] = BoardStates.REVEALED_BUT_NO_SHIP;
+
+
+        return new Board(this.rows, this.cols, this.boardStates);
     }
 
 
