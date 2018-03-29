@@ -78,6 +78,22 @@ public class Player {
     }
 
 
+    /**
+     * This method is for the player to choose the coordenate he/she will choose to guess if
+     * Ship will be revealed. it will return an Array of integers that represents the chosen coordenate
+     */
+    public Integer[] choosesRowAndColumn(final Integer row, final Integer col){
+        //RETURNING THE COORDENATE (ARRAY OF ROWS AND COLUMNS)
+        return new Integer[]{row, col};
+    }
+
+
+    /**
+     * This is the toString method. It will just display all the value of the attributes when asked
+     * to print the player object.
+     * @return PLAYER ATTRIBUTES
+     *
+     */
     @Override
     public String toString() {
         return "name: " + name + '\n' +
