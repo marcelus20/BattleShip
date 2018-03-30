@@ -5,7 +5,7 @@ public class Player {
      * THIS CLASS IS A BLUEPRINT OF WHAT THE BATTLESHIP PLAYER WILL BE ABLE TO DO.
      *
      * The player has 6 attributes: name, age, email, hits, miss and attempts.
-     * They will all be immutable ("final" will be declared), therefore, no need to keep them private.
+     * They will all be immutable ("final" will be declared), therefore, no need to keep them private or make getter and setters.
      * The only way of modifying hits, miss and attempts is by creating a new instance of player
      * with the new value.
      *
@@ -14,6 +14,10 @@ public class Player {
      *
      * For modifying the other immutable attributes, a private constructor will be called to create the player with the
      * different values for hits, misses and attempts. This will be done by using Player methods.
+     *
+     *
+     * THIS CLASS HAS NO GETTER AND SETTERS BECAUSE IT HAS GOT IMMUTABLE AND PUBLIC ATTRIBUTES.
+     * The setter method is kind what the incrementHits and IncrementMiss methods do.
      */
 
 

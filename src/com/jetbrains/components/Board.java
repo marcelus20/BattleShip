@@ -13,6 +13,9 @@ public class Board {
      *
      * The constructor will demand just the number of Rows and Columns as parameters and the rest will
      * be initialised as a default value in the constructor when Board object is created.
+     *
+     * * THIS CLASS HAS NO GETTER AND SETTERS BECAUSE IT HAS GOT IMMUTABLE AND PUBLIC ATTRIBUTES.
+     *
      */
 
     /**

@@ -50,7 +50,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
              * This looping will walk through all players in the array players and give them the chance to play
              */
             for(int i = 0; i < players.size(); i++){
-                System.out.println("It's "+players.get(i).name+ " turn! ");
+                System.out.println("It's "+players.get(i).name+ "'s turn! ");
 
                 Integer row,col; // HERE ARE THE VARIABLES THAT WILL BE STORED THE VALUE INPUTED BY PLAYER
 
@@ -145,11 +145,15 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                 }while(!validRoworCol);
 
 
-                System.out.println(players.get(i).name +"chooses coordinate ("+row+","+col+")\n");
+                System.out.println(players.get(i).name +" chooses coordinate ("+row+","+col+")\n");
+
 
 
                 Integer[] chosenCoordinate = players.get(i).choosesRowAndColumn(row, col);
 
+                /**
+                 * Updating board with the chosen coordinates
+                 */
                 this.board.updateBoard(chosenCoordinate);
 
                 /**
