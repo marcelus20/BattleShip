@@ -1,6 +1,8 @@
 package com.jetbrains;
 
-import sun.plugin2.message.TextEventMessage;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Board {
     /**
@@ -19,6 +21,7 @@ public class Board {
     public final Integer rows;
     public final Integer cols;
     public final BoardStates[][] boardStates;
+    public final Ship[] ships;
 
 
 
@@ -29,12 +32,14 @@ public class Board {
         this.rows = rows;
         this.cols = cols;
         this.boardStates = initBoardStates();
+        this.ships =  initShips();
     }
 
-    private Board(final Integer rows, final Integer cols, final BoardStates[][] boardState){
+    private Board(final Integer rows, final Integer cols, final BoardStates[][] boardState, final Ship[] ships){
         this.rows = rows;
         this.cols = cols;
         this.boardStates = boardState;
+        this.ships = ships;
     }
 
 
@@ -54,21 +59,50 @@ public class Board {
 
             }
         }
+        ;
         return tempBoardStates;
+    }
+
+    /**
+     * Initialising the instances of Ship in the attribute ships
+     *
+     */
+    private Ship[] initShips(){
+        Ship[] tempShip = new Ship[new Random().nextInt(4)+1];// THE BOARD CAN HAVE A MAXIMUN OF 5 SHIPS
+
+        String existingCoordinates = "";
+
+        // LOOP FOR CREATING INSTANCES IN THE SHIP ARRAY
+
+        for(int i = 0; i < tempShip.length; i++){
+            //boolean valid = false;
+
+            tempShip[i] = new Ship(this.rows, this.cols);
+            existingCoordinates += tempShip[i];
+
+            while(existingCoordinates.contains(Arrays.deepToString(tempShip))){
+                tempShip[i] = new Ship(this.rows, this.cols);
+
+            }
+
+
+        }
+        System.out.println(existingCoordinates);
+
+        return tempShip;
     }
 
 
     /**
-     * This method is for updating one coordenate of the board. it will modify the element of the 2D Array
+     * This method is for updating one coordinate of the board. it will modify the element of the 2D Array
      * in the boardStates attribute and the toString method will respond to this change.
      */
-    public Board updateBoard(final Integer[] coordenate){
+    public void updateBoard(final Integer[] coordinate){
 
-        this.boardStates[Integer.parseInt(coordenate[0].toString())]
-                        [Integer.parseInt(coordenate[1].toString())] = BoardStates.REVEALED_BUT_NO_SHIP;
+        this.boardStates[Integer.parseInt(coordinate[0].toString())]
+                        [Integer.parseInt(coordinate[1].toString())] = checkCoordinate(coordinate);
 
 
-        return new Board(this.rows, this.cols, this.boardStates);
     }
 
 
@@ -121,7 +155,7 @@ public class Board {
                 if(this.boardStates[i][j] == BoardStates.NOT_REVEALED){
                     item = " _ |";
                 }else if(this.boardStates[i][j] == BoardStates.REVEALED_BUT_NO_SHIP){
-                    item = " X |";
+                    item = " * |";
                 }else{
                     item = " H |";
                 }
@@ -131,6 +165,40 @@ public class Board {
         }
 
         return board;
+    }
+
+
+    /**
+     * This method will help the update board board to assign BoardStates constants to the coordenate.
+     * It will make use of the Boolean isShipCoordenate method to verify if coordenate passed as a parameter
+     * belongs to the ships coordenates, if so, the REVEALED_AND_HAS_SHIP will be assigned, otherwise, the REVEALED_
+     * BUT_NO_SHiP will be assgned and the board will be updated accordingly.
+     * @param coordinate
+     * @return
+     */
+    private BoardStates checkCoordinate(Integer[] coordinate){
+        if(isShipCoordinate(coordinate)){
+            return BoardStates.REVEALED_AND_HAS_SHIP;
+        }else{
+            return BoardStates.REVEALED_BUT_NO_SHIP;
+        }
+    }
+
+    /**
+     * Boolean method to check if ships coordinates contains cordenate given as a parameters.
+     * To keep things simple, it was used ToString of both arrays and checking if one string contains other.
+     * @param coordinate
+     * @return
+     */
+
+    private Boolean isShipCoordinate(Integer[] coordinate){
+        String cordinateStr = Arrays.deepToString(coordinate);
+        String shipsCoordenates = Arrays.deepToString(this.ships);
+        if(shipsCoordenates.contains(cordinateStr)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 
