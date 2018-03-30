@@ -36,53 +36,106 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
 
 
         this.isFinished = false; // ASSIGNING FALSE TO IS FINISHED.
-        this.board = setUpBoard();
-        this.players = setUpPlayers();
+        this.board = setUpBoard(); // HERE IS WHERE THE BOARD OBJECT WILL BE STORED
+        this.players = setUpPlayers(); // HERE IS WHERE ALL THE PLAYERS WILL BE STORE AS A SET OF PLAYERS
 
+
+        /**
+         * PRINTING BOARD BEFORE GUESSES SECTION BEGINS
+         */
         System.out.println(this.board);
 
         while(!this.isFinished){
+            /**
+             * This looping will walk through all players in the array players and give them the chance to play
+             */
             for(int i = 0; i < players.size(); i++){
                 System.out.println("It's "+players.get(i).name+ " turn! ");
-                Integer row,col;
 
-                Boolean validRoworCol = false;
+                Integer row,col; // HERE ARE THE VARIABLES THAT WILL BE STORED THE VALUE INPUTED BY PLAYER
 
-                String input;
+                Boolean validRoworCol; // THIS BOOLEAN VARIABLE IS USED BELLOW FOR VALIDATING VALUES FOR ROW AND COLLUMN
+
+                /**
+                 * RULES FOR ROWS AND COLUMNS
+                 * The boolean variable above mentioned will only change to true if the user obeys the following rules:
+                 * 1 - The row can't be greater than this.board.rows, it would be a invalid row otherwise.
+                 * 2 - The same applies for columns, can't be greater than this.board.cols
+                 * 3 - The user has to type coordinates separated by comas. Spaces will be ignored and
+                 * valid value will still be stored into rows and cols variables.
+                 * 4 - If the coordinate has already been chosen, this apply for Bots too.
+                 *
+                 */
+
+                String input; // HERE IS WHERE THE STRING INPUT GOES
                 do{
+                    /**
+                     * PLAYERS AND BOTS ARE DIFFERENT IN TERMS OF GUESSING
+                     * if the current player, selected by the for loop above is instance of Player,
+                     * the guessing is manually added by Human player.
+                     * If current player is instance of Bots, means that the computer will generate random
+                     * values for rows and cols.
+                     */
                     if(!(players.get(i) instanceof Bots)){
                         System.out.println("Enter the coordinate");
+
                         input = getInput("(x,y)",
                                 "[0-9 ]+,[0-9 ]+", "Invalid coordinate");
 
 
+                        /**
+                         * THE CONSTANT BELLOW WILL BE BREAK THE INPUT STRING WHERE THE COMA IS
+                         * and assign whatever is on the left to row and right to column
+                         */
                         final String[] inputArray = input.split(",");
+
+                        /**
+                         * assigning row and columns
+                         */
                         row = Integer.parseInt(inputArray[0].trim());
                         col = Integer.parseInt(inputArray[1].trim());
 
 
+                        /**
+                         * Checking if coordinate has been revealed, if so, the doWhile loop will start over
+                         */
                         if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                            //PRINTING THE ERROR INFORMATION
                             System.out.println("This coordinate has already been fetched, please, choose another one!");
-                            validRoworCol = false;
+                            validRoworCol = false;//STARTING OVER THE LOOP
                         }else{
+                            /**
+                             * If row or column is grater than the board properties, the loop will start over too, as it has been
+                             * explained on the rules topic above described.
+                             */
+
                             if(row >= this.board.rows || col >= this.board.cols){
                                 System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
                                 System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
-                                validRoworCol = false;
+                                validRoworCol = false;//STARTING OVER THE LOOP
                             }else{
+                                /**
+                                 * If code reaches here, then everything went fine, so the flow is good to proceed
+                                 *
+                                 */
                                 validRoworCol = true;
                             }
                         }
                     }else{
 
                         /**
-                         * If player.get(i) is instance of Bots, it will be assigned random rows and cols for the coordenate
+                         * If code reaches here, means that the current player (player.get(i))
+                         * is instance of Bots, then the guessing system is automatic by assigning
+                         * random rows and cols for the coordinate
                          */
                         row = new Random().nextInt(this.board.rows);
                         col = new Random().nextInt(this.board.cols);
 
+                        /**
+                         * Same if statement to validade if coordinate has been chosen
+                         */
                         if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
-                            validRoworCol = false;
+                            validRoworCol = false;//START OVER DOWHILE LOOP
                         }else{
                             validRoworCol = true;
                         }
@@ -91,27 +144,86 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
 
                 }while(!validRoworCol);
 
-                System.out.println(players.get(i).name +"chooses coordinate ("+row+","+col+")");
 
-                if(this.board.boardStates[row][col] != BoardStates.REVEALED_BUT_NO_SHIP){
-                    System.out.println("What a shame, no ship was found!");
-                    players.set(i, players.get(i).incrementHits());
-                }else{
-                    System.out.println("Amazing, that's a hit. You found a ship!");
-                    players.set(i, players.get(i).incrementHits());
-                }
+                System.out.println(players.get(i).name +"chooses coordinate ("+row+","+col+")\n");
 
-
-                System.out.println(players.get(i));
 
                 Integer[] chosenCoordinate = players.get(i).choosesRowAndColumn(row, col);
 
                 this.board.updateBoard(chosenCoordinate);
 
+                /**
+                 * This if statement will take care of scoring players based on their misses and hits
+                 */
+                if(this.board.boardStates[row][col] == BoardStates.REVEALED_AND_HAS_SHIP){
+                    /**
+                     * If code reaches here, means that user has a hit (found a slice of ship)
+                     * So it will be incremented in 1 the hits attribute:
+                     * Due to the immutability, it has to be assigned another player object at
+                     * the same index players.get(i) with the new value for hits
+                     */
+                    players.set(i, players.get(i).incrementHits());
+                }else{
+                    /**
+                     * Same thing happens here, but instead of increasing hits, it will increase miss.
+                     */
+                    players.set(i, players.get(i).incrementMiss());
+                }
+
+
                 SystemPause();
 
+                /**
+                 * printing once more the board
+                 */
                 System.out.println(this.board);
             }
+
+            /**
+             * Checking if game is finished.
+             * Game finishes if all ships coordinates were found.
+             * The number of ship coordinates is the ship length times number of ships.
+             */
+
+            Integer discoveredShips = 0; // THIS VARIABLE WILL STORE THE NUMBER OF COORDINATES THAT HAVE SHIPS IN IT
+
+            for(int i = 0; i < this.board.boardStates.length; i++){
+                for(int j = 0; j < this.board.boardStates[0].length; j++){
+                    if(this.board.boardStates[i][j] == BoardStates.REVEALED_AND_HAS_SHIP){
+                        /**
+                         * If the code arrives here, means that that ship was found, then increment discovered ships
+                         */
+                        discoveredShips++;
+                    }
+                }
+            }
+
+            /**
+             * GAME IS FINISHED IF all ships coordinates have been revealed.
+             * Example:
+             * if a ship has length of 3 and the board has 3 ships, then the total of ships coordenates are 9.
+             * Once discoveredShips variables reaches value of 9, gae is finished.
+             */
+            if(this.board.ships.length*this.board.ships[0].length == discoveredShips){
+
+                isFinished = true;//ONCE THIS IS TRUE, GAME IS FINISHED
+            }
+
+
+        }
+        /**
+         * printing rank
+         */
+        rankPrint();
+    }
+
+
+    /**
+     * method for printing the rank when game is finished
+     */
+    private void rankPrint(){
+        for(Player p : this.players){
+            System.out.println(p);
         }
     }
 
