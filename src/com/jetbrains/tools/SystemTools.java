@@ -1,4 +1,4 @@
-package com.jetbrains;
+package com.jetbrains.tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,7 @@
-package com.jetbrains;
+package com.jetbrains.components;
 
-import java.lang.reflect.Array;
+import com.jetbrains.BoardStates;
+
 import java.util.Arrays;
 import java.util.Random;
 
