@@ -16,7 +16,7 @@ public class Bots extends Player{
 
     @Override
     public String toString() {
-        return "====Bot======" +
+        return "====Bot======" + " \n"+
                 "name: " + name + "\n" +
                 "hits: " + hits + "\n"+
                 "miss: " + miss + "\n"+
