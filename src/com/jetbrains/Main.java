@@ -95,8 +95,16 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                         row = Integer.parseInt(inputArray[0].trim());
                         col = Integer.parseInt(inputArray[1].trim());
 
+
+                        /**
+                         * If row or column is grater than the board properties, the loop will start over too, as it has been
+                         * explained on the rules topic above described.
+                         */
                         if(row >= this.board.rows || col >= this.board.cols){
-                            validRoworCol = false;
+
+                            System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
+                            System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
+                            validRoworCol = false;//STARTING OVER THE LOOP
                         }else{
                             /**
                              * Checking if coordinate has been revealed, if so, the doWhile loop will start over
@@ -106,26 +114,10 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                                 System.out.println("This coordinate has already been fetched, please, choose another one!");
                                 validRoworCol = false;//STARTING OVER THE LOOP
                             }else{
-                                /**
-                                 * If row or column is grater than the board properties, the loop will start over too, as it has been
-                                 * explained on the rules topic above described.
-                                 */
 
-                                if(row >= this.board.rows || col >= this.board.cols){
-                                    System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
-                                    System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
-                                    validRoworCol = false;//STARTING OVER THE LOOP
-                                }else{
-                                    /**
-                                     * If code reaches here, then everything went fine, so the flow is good to proceed
-                                     *
-                                     */
-                                    validRoworCol = true;
+                                validRoworCol = true;
                                 }
                             }
-                        }
-
-
 
                     }else{
 
