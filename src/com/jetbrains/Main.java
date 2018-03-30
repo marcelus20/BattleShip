@@ -33,6 +33,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
      */
     Main(){
 
+        welcome();
 
 
         this.isFinished = false; // ASSIGNING FALSE TO IS FINISHED.
@@ -40,9 +41,14 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         this.players = setUpPlayers(); // HERE IS WHERE ALL THE PLAYERS WILL BE STORE AS A SET OF PLAYERS
 
 
+
+
+
         /**
          * PRINTING BOARD BEFORE GUESSES SECTION BEGINS
          */
+
+
         System.out.println(this.board);
 
         while(!this.isFinished){
@@ -239,6 +245,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
      */
     private Board setUpBoard(){
 
+        printTabledArray("SETTING UP BOARD:");
         /**
          * ASKING USER TO INPUT THE AMOUNT OF ROWS AND COLS
          */
@@ -251,6 +258,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         );
 
         //RETURNING THE BOARD WITH THE DIMENSIONS ABOVE INPUTED BY THE USER.
+        printTabledArray("BOARD CREATED AND LOADED");
         return new Board(row, cols);
     }
 
@@ -312,7 +320,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
             System.out.println("Setting up player "+String.valueOf(i+1));
             final String name = getInput("What's your name?", "[a-zA-Z ]+", "Type just alphabet characters");
             final Integer age = getAge();
-            final String eMail = getInput("your Email: ", "[a-zA-Z.0-9]+@[a-z]+.[a-z]+([a-z])?", "Invalid email.");
+            final String eMail = getInput("your Email: ", "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$", "Invalid email.");
             tempPlayers.add(new Player(name, age, eMail));
         }
 
@@ -334,6 +342,15 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         }while(age < 12 || age > 100);
 
         return age;
+    }
+
+    /**
+     * WELCOME METHOD
+     * @param
+     */
+    void welcome(){
+        printTabledArray("Battle Ship Game");
+        printTabledArray("Welcome!");
     }
 
 
