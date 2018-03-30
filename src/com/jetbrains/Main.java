@@ -94,7 +94,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                 case 3: rangeStop = 1; break;
                 default: rangeStop = 1;
             }
-            answer = getInput("How many?", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
+            answer = getInput("MAX "+rangeStop+ "can be added", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
             botsAmount = Integer.parseInt(answer);
 
             /**
@@ -112,7 +112,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
          */
 
         for(int i = 0; i < amountOfPlayers; i++){
-            System.out.println("Setting up player"+String.valueOf(i+1));
+            System.out.println("Setting up player "+String.valueOf(i+1));
             final String name = getInput("What's your name?", "[a-zA-Z ]+", "Type just alphabet characters");
             final Integer age = getAge();
             final String eMail = getInput("your Email: ", "[a-zA-Z.0-9]+@[a-z]+.[a-z]+([a-z])?", "Invalid email.");
