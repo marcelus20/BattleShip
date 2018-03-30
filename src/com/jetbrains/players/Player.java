@@ -1,4 +1,4 @@
-package com.jetbrains;
+package com.jetbrains.players;
 
 public class Player {
     /**
