@@ -14,6 +14,30 @@ public class Bots extends Player{
         super(name, null, null);
     }
 
+    private Bots(final String name, final Integer hits, final Integer miss, final Integer attempts){
+        super(name, null, null, hits, miss, attempts);
+
+    }
+
+
+    /**
+     * MODIFYING THE HITS ATTRIBUTE
+     * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
+     */
+    @Override
+    public Player incrementHits(){
+        return new Bots(this.name, this.hits+1, this.miss, this.attempts+1);
+    }
+
+    /**
+     * MODIFYING THE MISS ATTRIBUTE
+     * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
+     */
+    @Override
+    public Player incrementMiss(){
+        return new Bots(this.name, this.hits, this.miss+1, this.attempts+1);
+    }
+
     @Override
     public String toString() {
         return "====Bot======" + " \n"+
