@@ -48,7 +48,7 @@ public class Player {
      * SPECIAL CONSTRUCTOR FOR CHANGING THE OBJECT BY CREATING A NEW INSTANCE WITH NEW VALUES FOR
      * HITS MISS AND ATTEMPTS. THIS IS TO BE CALLED JUST IN THIS CLASS INSIDE THE CHANGER METHODS.
      */
-    private Player(
+    protected Player(
             final String name, final Integer age, final String eMail,
             final Integer hits, final Integer miss, final Integer attempts
     ){
