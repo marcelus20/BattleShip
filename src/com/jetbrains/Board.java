@@ -191,6 +191,7 @@ public class Board {
      * @return
      */
 
+
     private Boolean isShipCoordinate(Integer[] coordinate){
         String cordinateStr = Arrays.deepToString(coordinate);
         String shipsCoordenates = Arrays.deepToString(this.ships);
