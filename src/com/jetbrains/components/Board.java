@@ -92,7 +92,7 @@ public class Board {
 
         }
 
-        System.out.println("Number of the ships created: "+this.ships.length);
+        System.out.println("Number of the ships created: "+tempShip.length);
 
 
         return tempShip;
