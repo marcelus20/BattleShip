@@ -99,7 +99,8 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "name: " + name + '\n' +
+        return "========HumanPlayer" + "\n"+
+                "name: " + name + '\n' +
                 "age: " + age + '\n' +
                 "eMail: " + eMail + '\n' +
                 "hits: " + hits + '\n'+
