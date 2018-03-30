@@ -7,6 +7,7 @@ import com.jetbrains.tools.SystemTools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIMPLE THE CALLING OF SYSTEMTOOLS CLASS METHODS.
 
@@ -37,8 +38,80 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         this.isFinished = false; // ASSIGNING FALSE TO IS FINISHED.
         this.board = setUpBoard();
         this.players = setUpPlayers();
-        for(Player p : players){
-            System.out.println(p);
+
+        System.out.println(this.board);
+
+        while(!this.isFinished){
+            for(int i = 0; i < players.size(); i++){
+                System.out.println("It's "+players.get(i).name+ " turn! ");
+                Integer row,col;
+
+                Boolean validRoworCol = false;
+
+                String input;
+                do{
+                    if(!(players.get(i) instanceof Bots)){
+                        System.out.println("Enter the coordinate");
+                        input = getInput("(x,y)",
+                                "[0-9 ]+,[0-9 ]+", "Invalid coordinate");
+
+
+                        final String[] inputArray = input.split(",");
+                        row = Integer.parseInt(inputArray[0].trim());
+                        col = Integer.parseInt(inputArray[1].trim());
+
+
+                        if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                            System.out.println("This coordinate has already been fetched, please, choose another one!");
+                            validRoworCol = false;
+                        }else{
+                            if(row >= this.board.rows || col >= this.board.cols){
+                                System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
+                                System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
+                                validRoworCol = false;
+                            }else{
+                                validRoworCol = true;
+                            }
+                        }
+                    }else{
+
+                        /**
+                         * If player.get(i) is instance of Bots, it will be assigned random rows and cols for the coordenate
+                         */
+                        row = new Random().nextInt(this.board.rows);
+                        col = new Random().nextInt(this.board.cols);
+
+                        if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                            validRoworCol = false;
+                        }else{
+                            validRoworCol = true;
+                        }
+
+                    }
+
+                }while(!validRoworCol);
+
+                System.out.println(players.get(i).name +"chooses coordinate ("+row+","+col+")");
+
+                if(this.board.boardStates[row][col] != BoardStates.REVEALED_BUT_NO_SHIP){
+                    System.out.println("What a shame, no ship was found!");
+                    players.set(i, players.get(i).incrementHits());
+                }else{
+                    System.out.println("Amazing, that's a hit. You found a ship!");
+                    players.set(i, players.get(i).incrementHits());
+                }
+
+
+                System.out.println(players.get(i));
+
+                Integer[] chosenCoordinate = players.get(i).choosesRowAndColumn(row, col);
+
+                this.board.updateBoard(chosenCoordinate);
+
+                SystemPause();
+
+                System.out.println(this.board);
+            }
         }
     }
 
@@ -58,7 +131,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         );
 
         final Integer cols = Integer.parseInt(
-                getInput("Type the number of rows", "[1][0-9]|20", "Type numbers between 10 and 20!")
+                getInput("Type the number of columns", "[1][0-9]|20", "Type numbers between 10 and 20!")
         );
 
         //RETURNING THE BOARD WITH THE DIMENSIONS ABOVE INPUTED BY THE USER.
