@@ -269,6 +269,14 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         printTabledArray("Do you want to insert bots to the game?");
         String answer = getInput("Y/N", "[ynYN]", "type just Y for yes or N for no");
         if(answer.toLowerCase().equals("y")){
+
+            /**
+             * The allowed amount of bots will be set accordingly to the amount of Human players in game.
+             * The switch statement bellow will define the stop range of bots.
+             * if there is 3 Human players, only 1 bot will be added.
+             * if 2 Human players, only 2 bots can be added
+             * if 3, just 1 can be added.
+             */
             answer = "";
             printTabledArray("How many bots would you like to insert?");
 
