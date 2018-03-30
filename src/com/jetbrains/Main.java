@@ -166,11 +166,13 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                      * Due to the immutability, it has to be assigned another player object at
                      * the same index players.get(i) with the new value for hits
                      */
+                    System.out.println("Good one, you have a hit");
                     players.set(i, players.get(i).incrementHits());
                 }else{
                     /**
                      * Same thing happens here, but instead of increasing hits, it will increase miss.
                      */
+                    System.out.println("What a shame, you have got a miss. :(");
                     players.set(i, players.get(i).incrementMiss());
                 }
 
