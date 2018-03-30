@@ -95,32 +95,38 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                         row = Integer.parseInt(inputArray[0].trim());
                         col = Integer.parseInt(inputArray[1].trim());
 
-
-                        /**
-                         * Checking if coordinate has been revealed, if so, the doWhile loop will start over
-                         */
-                        if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
-                            //PRINTING THE ERROR INFORMATION
-                            System.out.println("This coordinate has already been fetched, please, choose another one!");
-                            validRoworCol = false;//STARTING OVER THE LOOP
+                        if(row >= this.board.rows || col >= this.board.cols){
+                            validRoworCol = false;
                         }else{
                             /**
-                             * If row or column is grater than the board properties, the loop will start over too, as it has been
-                             * explained on the rules topic above described.
+                             * Checking if coordinate has been revealed, if so, the doWhile loop will start over
                              */
-
-                            if(row >= this.board.rows || col >= this.board.cols){
-                                System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
-                                System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
+                            if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                                //PRINTING THE ERROR INFORMATION
+                                System.out.println("This coordinate has already been fetched, please, choose another one!");
                                 validRoworCol = false;//STARTING OVER THE LOOP
                             }else{
                                 /**
-                                 * If code reaches here, then everything went fine, so the flow is good to proceed
-                                 *
+                                 * If row or column is grater than the board properties, the loop will start over too, as it has been
+                                 * explained on the rules topic above described.
                                  */
-                                validRoworCol = true;
+
+                                if(row >= this.board.rows || col >= this.board.cols){
+                                    System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
+                                    System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
+                                    validRoworCol = false;//STARTING OVER THE LOOP
+                                }else{
+                                    /**
+                                     * If code reaches here, then everything went fine, so the flow is good to proceed
+                                     *
+                                     */
+                                    validRoworCol = true;
+                                }
                             }
                         }
+
+
+
                     }else{
 
                         /**
