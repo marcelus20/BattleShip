@@ -88,7 +88,7 @@ public class Board {
 
 
         }
-        System.out.println(existingCoordinates);
+
 
         return tempShip;
     }
