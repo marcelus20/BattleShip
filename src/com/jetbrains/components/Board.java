@@ -2,6 +2,7 @@ package com.jetbrains.components;
 
 import com.jetbrains.BoardStates;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -74,15 +75,50 @@ public class Board {
     private Ship[] initShips(){
         Ship[] tempShip = new Ship[new Random().nextInt(4)+1];// THE BOARD CAN HAVE A MAXIMUN OF 5 SHIPS
 
-        String existingCoordinates = "";
+
+        /**
+         * This array list bellow will contain all coordenates when new ships are created.
+         * On the creation of Ship, if at least 1 coordinate has already been added to this array list,
+         * it will keep creating until the new ship has not not coordinate contained in the array bellow.
+         * THIS PROCESS WILL AVOID TO CREATE TWO SHIPS IN THE SAME COORDINATE.
+         * CONCEPT USED - LINEAR SEARCH
+         */
+        ArrayList<Integer[]>existingCoordinates = new ArrayList<>();
 
         // LOOP FOR CREATING INSTANCES IN THE SHIP ARRAY
 
         for(int i = 0; i < tempShip.length; i++){
-            //boolean valid = false;
+            if(i != 0){
+                tempShip[i] = new Ship(this.rows, this.cols);
+                for(Integer [] coordenate : tempShip[i].coordenates){
+                    existingCoordinates.add(coordenate);
+                }
+            }else{
+                Boolean valid = false;
+                do{
+                    tempShip[i] = new Ship(this.rows, this.cols);
+                    /**
+                     * LINEAR SEARCH COMING INTO PLAY
+                     */
+                    for(Integer [] coordenate : tempShip[i].coordenates){
+                        /**
+                         * IF THIS SHIP POSITION IS ALREADY CONTAINED IN THE EXISTINGCOORDINATE ARRAYLIST
+                         * RESTART THE LOOP UNTIL IT IS NOT CONTAINED
+                         */
+                        if(existingCoordinates.contains(coordenate)){
+                            valid = false;//--->RESTART THE LOOP
+                        }else{
+                            valid = true;
+                        }
+                    }
+                }while(!valid);
+                for(Integer [] coordenate : tempShip[i].coordenates){
+                    existingCoordinates.add(coordenate);
+                }
 
-            tempShip[i] = new Ship(this.rows, this.cols);
-            existingCoordinates += tempShip[i];
+            }
+
+
 
             while(existingCoordinates.contains(Arrays.deepToString(tempShip))){
                 tempShip[i] = new Ship(this.rows, this.cols);
