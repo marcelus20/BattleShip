@@ -106,12 +106,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                          * If row or column is grater than the board properties, the loop will start over too, as it has been
                          * explained on the rules topic above described.
                          */
-                        if(row >= this.board.rows || col >= this.board.cols){
-
-                            System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
-                            System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
-                            validRoworCol = false;//STARTING OVER THE LOOP
-                        }else{
+                        try{
                             /**
                              * Checking if coordinate has been revealed, if so, the doWhile loop will start over
                              */
@@ -122,8 +117,12 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                             }else{
 
                                 validRoworCol = true;
-                                }
                             }
+                        }catch(ArrayIndexOutOfBoundsException arrOutBounds){
+                            System.out.println("The board has "+this.board.rows+" lines and "+this.board.cols+" columns");
+                            System.out.println("pick a number under "+this.board.rows+ "for rows and "+this.board.cols+"for columns");
+                            validRoworCol = false;//STARTING OVER THE LOOP
+                        }
 
                     }else{
 
