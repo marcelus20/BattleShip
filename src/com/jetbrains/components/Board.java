@@ -40,14 +40,6 @@ public class Board {
         this.ships =  initShips();
     }
 
-    private Board(final Integer rows, final Integer cols, final BoardStates[][] boardState, final Ship[] ships){
-        this.rows = rows;
-        this.cols = cols;
-        this.boardStates = boardState;
-        this.ships = ships;
-    }
-
-
     /**
      * method for initialising boardStates attribute
      * IT WILL BE ASSIGNED ALL NOT_REVEALED.
