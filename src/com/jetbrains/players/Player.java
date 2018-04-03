@@ -122,6 +122,17 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
 
 
     /**
+     * This getter will be kept private because tehre is no need to be called outside the class
+     * as all attributes are public due to the immutability.
+     * The reason it is being created, though, is that it is meant to be called in compareTo
+     * Overide method implemented from Comparable interface.
+     * @return this.hits
+     */
+    private Integer getHits(){
+        return this.hits;
+    }
+
+    /**
      * This method will arrange the array of Players object in descending order.
      * Once again, this is an override from Comparable interface.
      * This is possible only because I have declared this class implements Comparable.
@@ -131,13 +142,9 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
     @Override
     public int compareTo(Player comparePlayer) {
 
-        if(this.hits == comparePlayer.hits){
-            return 0;
-        }else if(this.hits < comparePlayer.hits){
-            return -1;
-        }else{
-            return 1;
-        }
+        int compareHits = ((Player) comparePlayer).getHits();//--> here is where I am using the getter method.
+
+        return compareHits - this.hits;
 
     }
 }
