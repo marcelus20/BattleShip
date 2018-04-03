@@ -83,7 +83,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                      * If current player is instance of Bots, means that the computer will generate random
                      * values for rows and cols.
                      */
-                    if(!(players.get(i) instanceof Player)){
+                    if(!(players.get(i) instanceof Bots)){
                         System.out.println("Enter the coordinate");
 
                         input = getInput("(x,y)",
@@ -182,7 +182,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                 }
 
 
-                //SystemPause();
+                SystemPause();
 
                 /**
                  * printing once more the board
