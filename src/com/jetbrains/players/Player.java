@@ -1,6 +1,12 @@
 package com.jetbrains.players;
 
-public class Player {
+/**
+ * This class implements Comparable interface cause it has an Override method called ComparedTo
+ * that will help build the rank method at Main class.
+ * Basically this is sot sort the Array of players by their attributes this.hits(score).
+ */
+
+public class Player implements Comparable<Player>{//--> implementing and Interface to sort arrays of Players
     /**
      * THIS CLASS IS A BLUEPRINT OF WHAT THE BATTLESHIP PLAYER WILL BE ABLE TO DO.
      *
@@ -111,5 +117,32 @@ public class Player {
                 "miss: " + miss + '\n' +
                 "attempts: " + attempts+'\n'
                 ;
+    }
+
+
+    /**
+     * This getter will be kept private because tehre is no need to be called outside the class
+     * as all attributes are public due to the immutability.
+     * The reason it is being created, though, is that it is meant to be called in compareTo
+     * Overide method implemented from Comparable interface.
+     * @return
+     */
+    private Integer getHits(){
+        return this.hits;
+    }
+
+    /**
+     * This will method will arrange the array of Players object in descending order.
+     * Once again, this is an override from Comparable interface.
+     * @param comparePlayer
+     * @return CompareHits - this.hits
+     */
+    @Override
+    public int compareTo(Player comparePlayer) {
+
+        int compareHits = ((Player) comparePlayer).getHits();//--> here is where I am using the getter method.
+
+        return compareHits - this.hits;
+
     }
 }
