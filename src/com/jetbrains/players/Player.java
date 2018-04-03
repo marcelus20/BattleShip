@@ -3,7 +3,8 @@ package com.jetbrains.players;
 /**
  * This class implements Comparable interface cause it has an Override method called ComparedTo
  * that will help build the rank method at Main class.
- * Basically this is sot sort the Array of players by their attributes this.hits(score).
+ * Basically this Comparable interface will make possible to
+ * sort the Array of players by their attributes this.hits.
  */
 
 public class Player implements Comparable<Player>{//--> implementing and Interface to sort arrays of Players
@@ -125,15 +126,16 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
      * as all attributes are public due to the immutability.
      * The reason it is being created, though, is that it is meant to be called in compareTo
      * Overide method implemented from Comparable interface.
-     * @return
+     * @return this.hits
      */
     private Integer getHits(){
         return this.hits;
     }
 
     /**
-     * This will method will arrange the array of Players object in descending order.
+     * This method will arrange the array of Players object in descending order.
      * Once again, this is an override from Comparable interface.
+     * This is possible only because I have declared this class implements Comparable.
      * @param comparePlayer
      * @return CompareHits - this.hits
      */
