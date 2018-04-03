@@ -7,7 +7,9 @@ import com.jetbrains.tools.SystemTools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIMPLE THE CALLING OF SYSTEMTOOLS CLASS METHODS.
 
@@ -232,6 +234,13 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
      * method for printing the rank when game is finished
      */
     private void rankPrint(){
+        /**
+         * here is where the compareTo method from Players is handy.
+         * When calling Collections.sort(), the rule of sorting the
+         * Player object is by its hits attribute. as Programmed at
+         * Player class (com.jetbrains.components.Player.CompareTo)
+         */
+        Collections.sort(this.players);
         for(Player p : this.players){
             System.out.println(p);
         }
