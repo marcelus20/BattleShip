@@ -2,6 +2,8 @@ package com.jetbrains.players;
 
 import com.jetbrains.tools.SystemTools;
 
+import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
+
 public class Bots extends Player{
 
 
@@ -40,8 +42,8 @@ public class Bots extends Player{
 
     @Override
     public String toString() {
-        return "====Bot======" + " \n"+
-                "name: " + name + "\n" +
+        return "***Bot***" + " \n"+
+                "name: " + capitalize(name) + "\n" +
                 "hits: " + hits + "\n"+
                 "miss: " + miss + "\n"+
                 "attempts: " + attempts;

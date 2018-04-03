@@ -1,5 +1,7 @@
 package com.jetbrains.players;
 
+import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
+
 /**
  * This class implements Comparable interface cause it has an Override method called ComparedTo
  * that will help build the rank method at Main class.
@@ -110,8 +112,8 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
      */
     @Override
     public String toString() {
-        return "========HumanPlayer" + "\n"+
-                "name: " + name + '\n' +
+        return "***HumanPlayer***" + "\n\n"+
+                "name: " + capitalize(name) + '\n' +
                 "age: " + age + '\n' +
                 "eMail: " + eMail + '\n' +
                 "hits: " + hits + '\n'+
