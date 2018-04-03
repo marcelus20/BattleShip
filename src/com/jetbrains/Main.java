@@ -6,10 +6,9 @@ import com.jetbrains.players.Player;
 import com.jetbrains.tools.SystemTools;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
+
 
 public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIMPLE THE CALLING OF SYSTEMTOOLS CLASS METHODS.
 
