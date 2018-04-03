@@ -134,9 +134,9 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
         if(this.hits == comparePlayer.hits){
             return 0;
         }else if(this.hits < comparePlayer.hits){
-            return -1;
-        }else{
             return 1;
+        }else{
+            return -1;
         }
 
     }
