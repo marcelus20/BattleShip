@@ -287,38 +287,41 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
          *
          */
         final Integer botsAmount;
-        printTabledArray("Do you want to insert bots to the game?");
-        String answer = getInput("Y/N", "[ynYN]", "type just Y for yes or N for no");
-        if(answer.toLowerCase().equals("y")){
+        if(amountOfPlayers < 4){
+            printTabledArray("Do you want to insert bots to the game?");
+            String answer = getInput("Y/N", "[ynYN]", "type just Y for yes or N for no");
+            if(answer.toLowerCase().equals("y")){
 
-            /**
-             * The allowed amount of bots will be set accordingly to the amount of Human players in game.
-             * The switch statement bellow will define the stop range of bots.
-             * if there is 3 Human players, only 1 bot will be added.
-             * if 2 Human players, only 2 bots can be added
-             * if 3, just 1 can be added.
-             */
-            answer = "";
-            printTabledArray("How many bots would you like to insert?");
+                /**
+                 * The allowed amount of bots will be set accordingly to the amount of Human players in game.
+                 * The switch statement bellow will define the stop range of bots.
+                 * if there is 3 Human players, only 1 bot will be added.
+                 * if 2 Human players, only 2 bots can be added
+                 * if 3, just 1 can be added.
+                 */
+                answer = "";
+                printTabledArray("How many bots would you like to insert?");
 
-            final Integer rangeStop;
-            switch (amountOfPlayers){
-                case 1: rangeStop = 3; break;
-                case 2: rangeStop = 2; break;
-                case 3: rangeStop = 1; break;
-                default: rangeStop = 1;
-            }
-            answer = getInput("MAX "+rangeStop+ "can be added", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
-            botsAmount = Integer.parseInt(answer);
+                final Integer rangeStop;
+                switch (amountOfPlayers){
+                    case 1: rangeStop = 3; break;
+                    case 2: rangeStop = 2; break;
+                    case 3: rangeStop = 1; break;
+                    default: rangeStop = 1;
+                }
+                answer = getInput("MAX "+rangeStop+ "can be added", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
+                botsAmount = Integer.parseInt(answer);
 
-            /**
-             * ADDING BOTS TO THE LIST
-             */
-            for (int i = 0; i < botsAmount; i++){
-                tempPlayers.add(new Bots(genRandomName()));
-                System.out.println("Added BOT player: "+ tempPlayers.get(i).name);
+                /**
+                 * ADDING BOTS TO THE LIST
+                 */
+                for (int i = 0; i < botsAmount; i++){
+                    tempPlayers.add(new Bots(genRandomName()));
+                    System.out.println("Added BOT player: "+ tempPlayers.get(i).name);
+                }
             }
         }
+
 
 
         /**
@@ -329,7 +332,9 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
             System.out.println("Setting up player "+String.valueOf(i+1));
             final String name = getInput("What's your name?", "[a-zA-Z ]+", "Type just alphabet characters");
             final Integer age = getAge();
-            final String eMail = getInput("your Email: ", "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$", "Invalid email.");
+            final String eMail = getInput("your Email: ",
+                    "[a-zA-Z0-9]+[._a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]*[a-zA-Z]*@[a-zA-Z0-9]{2,8}+[.]+[a-zA-Z.]{2,6}",
+                    "Invalid email.");
             tempPlayers.add(new Player(name, age, eMail));
         }
 
