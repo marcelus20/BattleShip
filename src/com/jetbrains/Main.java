@@ -240,14 +240,32 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
          * Player class (com.jetbrains.components.Player.CompareTo)
          */
         Collections.sort(this.players);
+
+
+
+
         Integer index = 0;
         String title = "";
         for(Player p : this.players){
             if(index == 0){
                 title = "Winner! 1° place!";
             }else if(index == this.players.size()-1){
-                title = "Loser... >:( "+String.valueOf(this.players.size()-1)+"° place!";
+                title = "Loser... >:( "+String.valueOf(this.players.size())+"° place!";
+            }else{
+                title = String.valueOf(index+1)+"° place.";
             }
+
+
+            /**
+             * Checking the draws
+             */
+            if(index != this.players.size()-1){
+                if(this.players.get(index).compareTo(this.players.get(index+1))==0){
+                    title += "DRAW WITH "+this.players.get(index+1).name;
+                }
+            }
+
+
             printTabledArray(title);
             printTabledArray(p.toString());
             index++;
