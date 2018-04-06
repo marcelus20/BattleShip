@@ -44,7 +44,7 @@ public class SystemTools {
     /**
      * method for pausing game
      */
-    public void SystemPause(){
+    public static void SystemPause(){
         getInput("Press enter to continue.","","");
     }
 
