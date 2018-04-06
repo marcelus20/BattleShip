@@ -1,16 +1,18 @@
 package com.jetbrains;
 
+import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import com.jetbrains.components.Board;
 import com.jetbrains.players.Bots;
 import com.jetbrains.players.Player;
 import com.jetbrains.tools.SystemTools;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
 
-public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIMPLE THE CALLING OF SYSTEMTOOLS CLASS METHODS.
+public class Main{
 
     /**
      * This is the Game class. All the other classes will be connected, instantiated and executed here.
@@ -83,10 +85,10 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                      * If current player is instance of Bots, means that the computer will generate random
                      * values for rows and cols.
                      */
-                    if(!(players.get(i) instanceof Bots)){
+                    if(!(players.get(i) instanceof Player)){
                         System.out.println("Enter the coordinate");
 
-                        input = getInput("(x,y)",
+                        input = SystemTools.getInput("(x,y)",
                                 "[0-9 ]+,[0-9 ]+", "Invalid coordinate");
 
 
@@ -116,7 +118,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                             /**
                              * Checking if coordinate has been revealed, if so, the doWhile loop will start over
                              */
-                            if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                            if(this.board.getBoardStates()[row][col] != BoardStates.NOT_REVEALED){
                                 //PRINTING THE ERROR INFORMATION
                                 System.out.println("This coordinate has already been fetched, please, choose another one!");
                                 validRoworCol = false;//STARTING OVER THE LOOP
@@ -139,7 +141,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                         /**
                          * Same if statement to validade if coordinate has been chosen
                          */
-                        if(this.board.boardStates[row][col] != BoardStates.NOT_REVEALED){
+                        if(this.board.getBoardStates()[row][col] != BoardStates.NOT_REVEALED){
                             validRoworCol = false;//START OVER DOWHILE LOOP
                         }else{
                             validRoworCol = true;
@@ -164,7 +166,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                 /**
                  * This if statement will take care of scoring players based on their misses and hits
                  */
-                if(this.board.boardStates[row][col] == BoardStates.REVEALED_AND_HAS_SHIP){
+                if(this.board.getBoardStates()[row][col] == BoardStates.REVEALED_AND_HAS_SHIP){
                     /**
                      * If code reaches here, means that user has a hit (found a slice of ship)
                      * So it will be incremented in 1 the hits attribute:
@@ -172,17 +174,17 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                      * the same index players.get(i) with the new value for hits
                      */
                     System.out.println("Good one, you have a hit");//
-                    players.set(i, players.get(i).incrementHits());
+                    players.get(i).incrementHits();
                 }else{
                     /**
                      * Same thing happens here, but instead of increasing hits, it will increase miss.
                      */
                     System.out.println("What a shame, you have got a miss. :(");
-                    players.set(i, players.get(i).incrementMiss());
+                    players.get(i).incrementMiss();
                 }
 
 
-                SystemPause();
+                //SystemPause();
 
                 /**
                  * printing once more the board
@@ -198,9 +200,9 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
 
             Integer discoveredShips = 0; // THIS VARIABLE WILL STORE THE NUMBER OF COORDINATES THAT HAVE SHIPS IN IT
 
-            for(int i = 0; i < this.board.boardStates.length; i++){
-                for(int j = 0; j < this.board.boardStates[0].length; j++){
-                    if(this.board.boardStates[i][j] == BoardStates.REVEALED_AND_HAS_SHIP){
+            for(int i = 0; i < this.board.getBoardStates().length; i++){
+                for(int j = 0; j < this.board.getBoardStates()[0].length; j++){
+                    if(this.board.getBoardStates()[i][j] == BoardStates.REVEALED_AND_HAS_SHIP){
                         /**
                          * If the code arrives here, means that that ship was found, then increment discovered ships
                          */
@@ -215,7 +217,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
              * if a ship has length of 3 and the board has 3 ships, then the total of ships coordenates are 9.
              * Once discoveredShips variables reaches value of 9, gae is finished.
              */
-            if(this.board.ships.length*this.board.ships[0].length == discoveredShips){
+            if(this.board.getShips().length*this.board.getShips()[0].getLength() == discoveredShips){
 
                 isFinished = true;//ONCE THIS IS TRUE, GAME IS FINISHED
             }
@@ -266,8 +268,8 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
             }
 
 
-            printTabledArray(title);
-            printTabledArray(p.toString());
+            SystemTools.printTabledArray(title);
+            SystemTools.printTabledArray(p.toString());
             index++;
             title = "";
         }
@@ -281,20 +283,20 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
      */
     private Board setUpBoard(){
 
-        printTabledArray("SETTING UP BOARD:");
+        SystemTools.printTabledArray("SETTING UP BOARD:");
         /**
          * ASKING USER TO INPUT THE AMOUNT OF ROWS AND COLS
          */
         final Integer row = Integer.parseInt(
-                getInput("Type the number of rows", "[1][0-9]|20", "Type numbers between 10 and 20!")
+                SystemTools.getInput("Type the number of rows", "[1][0-9]|20", "Type numbers between 10 and 20!")
         );
 
         final Integer cols = Integer.parseInt(
-                getInput("Type the number of columns", "[1][0-9]|20", "Type numbers between 10 and 20!")
+                SystemTools.getInput("Type the number of columns", "[1][0-9]|20", "Type numbers between 10 and 20!")
         );
 
         //RETURNING THE BOARD WITH THE DIMENSIONS ABOVE INPUTED BY THE USER.
-        printTabledArray("BOARD CREATED AND LOADED");
+        SystemTools.printTabledArray("BOARD CREATED AND LOADED");
         return new Board(row, cols);
     }
 
@@ -306,7 +308,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         ArrayList<Player> tempPlayers= new ArrayList<Player>();
 
         final Integer amountOfPlayers = Integer.parseInt(
-                getInput("How many players will participate?", "[1-4]", "Type numbers between 1 and 4")
+                SystemTools.getInput("How many players will participate?", "[1-4]", "Type numbers between 1 and 4")
         );
 
         /**
@@ -315,8 +317,8 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
          */
         final Integer botsAmount;
         if(amountOfPlayers < 4){
-            printTabledArray("Do you want to insert bots to the game?");
-            String answer = getInput("Y/N", "[ynYN]", "type just Y for yes or N for no");
+            SystemTools.printTabledArray("Do you want to insert bots to the game?");
+            String answer = SystemTools.getInput("Y/N", "[ynYN]", "type just Y for yes or N for no");
             if(answer.toLowerCase().equals("y")){
 
                 /**
@@ -327,7 +329,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                  * if 3, just 1 can be added.
                  */
                 answer = "";
-                printTabledArray("How many bots would you like to insert?");
+                SystemTools.printTabledArray("How many bots would you like to insert?");
 
                 final Integer rangeStop;
                 switch (amountOfPlayers){
@@ -336,14 +338,14 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
                     case 3: rangeStop = 1; break;
                     default: rangeStop = 1;
                 }
-                answer = getInput("MAX "+rangeStop+ " can be added", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
+                answer = SystemTools.getInput("MAX "+rangeStop+ " can be added", "[1-"+rangeStop+"]", "Type numbers between 1 and "+rangeStop);
                 botsAmount = Integer.parseInt(answer);
 
                 /**
                  * ADDING BOTS TO THE LIST
                  */
                 for (int i = 0; i < botsAmount; i++){
-                    tempPlayers.add(new Bots(genRandomName()));
+                    tempPlayers.add(new Bots(SystemTools.genRandomName()));
                     System.out.println("Added BOT player: "+ tempPlayers.get(i).name);
                 }
             }
@@ -357,15 +359,34 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
 
         for(int i = 0; i < amountOfPlayers; i++){
             System.out.println("Setting up player "+String.valueOf(i+1));
-            final String name = getInput("What's your name?", "[a-zA-Z ]+", "Type just alphabet characters");
+            final String name = getName();
             final Integer age = getAge();
-            final String eMail = getInput("your Email: ",
+            final String eMail = SystemTools.getInput("your Email: ",
                     "[a-zA-Z0-9]+[._a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]*[a-zA-Z]*@[a-zA-Z0-9]{2,8}+[.]+[a-zA-Z.]{2,6}",
                     "Invalid email.");
             tempPlayers.add(new Player(name, age, eMail));
         }
 
         return tempPlayers;
+    }
+
+    private String getName(){
+        String name = "";
+        String[] nameArr;
+        do{
+            name = SystemTools.getInput("What's your full name?", "[a-zA-Z ]+", "Type just alphabet characters");
+            nameArr = name.split(" ");
+            if(nameArr.length == 1){
+                System.out.println("Type at least 2 words, your name and surname");
+            }
+        }while(nameArr.length == 1);
+
+        name = "";
+        //CAPITALIZING EVERY WORD IN NAME
+        for(int i = 0; i < nameArr.length; i++){
+            name += capitalize(nameArr[i]+" ");
+        }
+        return name;
     }
 
     /**
@@ -376,7 +397,7 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
         Integer age;
 
         do{
-            age = Integer.parseInt(getInput("How old are you?", "[0-9]+", "Just numbers!"));
+            age = Integer.parseInt(SystemTools.getInput("How old are you?", "[0-9]+", "Just numbers!"));
             if(age < 12 || age > 100){
                 System.out.println("Age should be over 12 and under 100");
             }
@@ -390,9 +411,11 @@ public class Main extends SystemTools{// THIS INHERITANCE IS JUST FOR MAKING SIM
      * @param
      */
     void welcome(){
-        printTabledArray("Battle Ship Game");
-        printTabledArray("Welcome!");
+        SystemTools.printTabledArray("Battle Ship Game");
+        SystemTools.printTabledArray("Welcome!");
     }
+
+
 
 
 
