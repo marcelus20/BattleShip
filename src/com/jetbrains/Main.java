@@ -412,7 +412,8 @@ public class Main{
      */
     void welcome(){
         SystemTools.printTabledArray("Battle Ship Game");
-        SystemTools.printTabledArray("Welcome!");
+        SystemTools.
+                printTabledArray("Welcome!");
     }
 
 
