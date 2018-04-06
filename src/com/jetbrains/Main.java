@@ -85,7 +85,7 @@ public class Main{
                      * If current player is instance of Bots, means that the computer will generate random
                      * values for rows and cols.
                      */
-                    if(!(players.get(i) instanceof Player)){
+                    if(!(players.get(i) instanceof Bots)){
                         System.out.println("Enter the coordinate");
 
                         input = SystemTools.getInput("(x,y)",
@@ -184,7 +184,7 @@ public class Main{
                 }
 
 
-                //SystemPause();
+                SystemTools.SystemPause();
 
                 /**
                  * printing once more the board
