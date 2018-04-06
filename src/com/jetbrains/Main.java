@@ -85,7 +85,7 @@ public class Main{
                      * If current player is instance of Bots, means that the computer will generate random
                      * values for rows and cols.
                      */
-                    if(!(players.get(i) instanceof Bots)){
+                    if(!(players.get(i) instanceof Player)){
                         System.out.println("Enter the coordinate");
 
                         input = SystemTools.getInput("(x,y)",
@@ -184,7 +184,7 @@ public class Main{
                 }
 
 
-                SystemTools.SystemPause();
+                //SystemTools.SystemPause();
 
                 /**
                  * printing once more the board
@@ -220,6 +220,8 @@ public class Main{
             if(this.board.getShips().length*this.board.getShips()[0].getLength() == discoveredShips){
 
                 isFinished = true;//ONCE THIS IS TRUE, GAME IS FINISHED
+                //BREAK THE LOOP TO KEEP GO STRAIGHT AWAY TO THE RANK
+                break;
             }
 
 
