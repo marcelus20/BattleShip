@@ -1,8 +1,12 @@
 package com.jetbrains.tools;
 
+import com.jetbrains.components.Ship;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -19,7 +23,7 @@ public class SystemTools {
      * @param msgError - an printing error msg in case user does not type what he/she has been asked
      * @return return a String
      */
-    public String getInput(final String msg, final String regex, final String msgError){
+    public static String getInput(final String msg, final String regex, final String msgError){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
 
@@ -44,7 +48,7 @@ public class SystemTools {
         getInput("Press enter to continue.","","");
     }
 
-    public void printTabledArray(final String[] arr){
+    public static void printTabledArray(final String[] arr){
         //DEFINING WIDTH OF TABLE BASED ON THE BIGEST STRING ELEMENT IN THE ARRAY:
         final Integer width = 50;
         System.out.println("+"+strMultiply("-", width)+"+");
@@ -58,7 +62,7 @@ public class SystemTools {
         System.out.println("+"+strMultiply("-", width)+"+");
     }
 
-    public void printTabledArray(final String str){
+    public static void printTabledArray(final String str){
         printTabledArray(new String[]{str});
     }
 
@@ -72,7 +76,7 @@ public class SystemTools {
         return biggest;
     }
 
-    public String strMultiply(final String str, final Integer times){
+    public static String strMultiply(final String str, final Integer times){
         String text = "";
         for(int i = 0; i < times; i++){
             text+=str;
@@ -85,7 +89,7 @@ public class SystemTools {
      * it has a list of names, and it will return one of these names. It will be chosen randomly.
      * @return
      */
-    public String genRandomName(){
+    public static String genRandomName(){
         String[] listOfNames = new String[]{
                 "Raphus Miwe","Daleanix Zazorie","Korla Impira", "Himel Sevinjoh", "Adia Embex",
                 "Liversei Laugath", "Antriel Hani", "Crona Meles", "Nilor Asthon", "Glon Umel",
@@ -97,5 +101,34 @@ public class SystemTools {
         };
         return listOfNames[new Random().nextInt(listOfNames.length)];
     }
+
+
+    public static Boolean hasComunCoordinate(Ship a, Ship b){
+
+        for(int i = 0; i < a.getLength(); i++){
+            for(int j = 0; j < b.getLength(); j++){
+                if (a.getCoordenates()[i][0] == b.getCoordenates()[i][0] && a.getCoordenates()[j][1] == b.getCoordenates()[j][1]){
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static Boolean hasComunCoordinate(Ship ship , ArrayList<Integer[]> coordinates){
+
+       for(int i = 0; i < ship.getLength(); i++){
+           for(int j = 0; j < coordinates.size(); j++){
+               if(Arrays.equals(ship.getCoordenates()[i], coordinates.get(j))){
+                   return true;
+               }
+           }
+       }
+
+        return false;
+    }
+
 
 }
