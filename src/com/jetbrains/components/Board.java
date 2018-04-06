@@ -39,9 +39,7 @@ public class Board {
         this.cols = cols;
         this.boardStates = initBoardStates();
         this.ships =  initShips();
-        for(Ship ship : ships){
-            System.out.println(ship);
-        }
+
     }
 
     /**
