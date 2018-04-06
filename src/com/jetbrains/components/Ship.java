@@ -17,9 +17,9 @@ public class Ship {
     /**
      * LIST OF ATTRIBUTE OF A SHIP OBJECT - ALL IMMUTABLE, NO NEED TO KEEP PRIVATE
      */
-    public final Integer length;
-    public final Integer[][] coordenates;
-    public final Boolean isVertical;
+    private final Integer length;
+    private final Integer[][] coordenates;
+    private final Boolean isVertical;
 
     /**
      * CONSTRUCTOR
@@ -28,6 +28,18 @@ public class Ship {
         this.length = Math.round(boardCols/3);
         this.isVertical = new Random().nextBoolean();
         this.coordenates = initCord(boardRows, boardCols );
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public Integer[][] getCoordenates() {
+        return coordenates;
+    }
+
+    public Boolean getVertical() {
+        return isVertical;
     }
 
     /**
