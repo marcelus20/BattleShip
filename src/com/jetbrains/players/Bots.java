@@ -22,30 +22,16 @@ public class Bots extends Player{
     }
 
 
-    /**
-     * MODIFYING THE HITS ATTRIBUTE
-     * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
-     */
-    @Override
-    public Player incrementHits(){
-        return new Bots(this.name, this.hits+1, this.miss, this.attempts+1);
-    }
-
-    /**
-     * MODIFYING THE MISS ATTRIBUTE
-     * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
-     */
-    @Override
-    public Player incrementMiss(){
-        return new Bots(this.name, this.hits, this.miss+1, this.attempts+1);
-    }
-
     @Override
     public String toString() {
-        return "***Bot***" + " \n"+
-                "name: " + capitalize(name) + "\n" +
-                "hits: " + hits + "\n"+
-                "miss: " + miss + "\n"+
-                "attempts: " + attempts;
+        return "***HumanPlayer***" + "\n\n"+
+                "name: " + capitalize(name) + '\n' +
+                "hits: " + hits + '\n'+
+                "miss: " + miss + '\n' +
+                "attempts: " + attempts+'\n'+
+                "*-----------------------------*\n"+
+                "|  SCORE: " + this.score+ "   |   \n" +
+                "*-----------------------------*"
+                ;
     }
 }

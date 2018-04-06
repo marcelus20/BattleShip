@@ -1,5 +1,7 @@
 package com.jetbrains.players;
 
+import com.jetbrains.tools.SystemTools;
+
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 
 /**
@@ -36,9 +38,10 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
     public final String name;
     public final Integer age;
     public final String eMail;
-    public final Integer hits;
-    public final Integer miss;
-    public final Integer attempts;
+    protected Integer hits;
+    protected Integer miss;
+    protected Integer attempts;
+    protected Integer score;
 
     /**
      * DEFAULT CONSTRUCTOR FOR INITIALIZING ALL THIS ATTRIBUTES:
@@ -78,16 +81,20 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
      * MODIFYING THE HITS ATTRIBUTE
      * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
      */
-    public Player incrementHits(){
-        return new Player(this.name, this.age, this.eMail, this.hits+1, this.miss, this.attempts+1);
+    public void incrementHits(){
+        this.hits++;
+        this.attempts++;
+        this.score = this.hits-(this.miss*2);
     }
 
     /**
      * MODIFYING THE MISS ATTRIBUTE
      * THIS METHOD WILL RETURN ANOTHER PLAYER OBJECT WITH THE VALUE OF HITS CHANGED.
      */
-    public Player incrementMiss(){
-        return new Player(this.name, this.age, this.eMail, this.hits, this.miss+1, this.attempts+1);
+    public void incrementMiss(){
+        this.miss++;
+        this.attempts++;
+        this.score = this.hits-(this.miss*2);
     }
 
 
@@ -118,7 +125,10 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
                 "eMail: " + eMail + '\n' +
                 "hits: " + hits + '\n'+
                 "miss: " + miss + '\n' +
-                "attempts: " + attempts+'\n'
+                "attempts: " + attempts+'\n'+
+                "*-----------------------------*\n"+
+                "|  SCORE: " + this.score+ "   |   \n" +
+                "*-----------------------------*"
                 ;
     }
 
@@ -133,9 +143,9 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
     @Override
     public int compareTo(Player comparePlayer) {
 
-        if(this.hits == comparePlayer.hits){
+        if(this.hits == comparePlayer.score){
             return 0;
-        }else if(this.hits < comparePlayer.hits){
+        }else if(this.hits < comparePlayer.score){
             return 1;
         }else{
             return -1;
