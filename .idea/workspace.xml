@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a84a8fe-9c0d-4c9b-93a9-c54fe46e36f3" name="Default" comment="">
+    <list default="true" id="3a84a8fe-9c0d-4c9b-93a9-c54fe46e36f3" name="Default" comment="hidden ship coordinate from users">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BattleShipGame/com/jetbrains/Main.class" afterPath="$PROJECT_DIR$/out/production/BattleShipGame/com/jetbrains/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -13,15 +13,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="BattleShip" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="322" column="112" lean-forward="false" selection-start-line="322" selection-start-column="112" selection-end-line="322" selection-end-column="112" />
+            <state relative-caret-position="616">
+              <caret line="299" column="36" lean-forward="true" selection-start-line="299" selection-start-column="20" selection-end-line="299" selection-end-column="36" />
               <folding>
-                <element signature="e#10734#10742#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -30,8 +33,8 @@
       <file leaf-file-name="SystemTools.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/tools/SystemTools.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="264">
+              <caret line="94" column="72" lean-forward="false" selection-start-line="94" selection-start-column="72" selection-end-line="94" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,8 +45,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="19" column="85" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="19" selection-end-column="85" />
+            <state relative-caret-position="88">
+              <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -52,14 +55,9 @@
       <file leaf-file-name="Bots.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Bots.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-              <folding>
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
-                <element signature="e#1047#1048#0" expanded="true" />
-                <element signature="e#1130#1131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="528">
+              <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,10 +65,14 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/components/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="94" column="74" lean-forward="false" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
+            <state relative-caret-position="572">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5678#5679#0" expanded="true" />
+                <element signature="e#5712#5713#0" expanded="true" />
+                <element signature="e#5744#5745#0" expanded="true" />
+                <element signature="e#5772#5773#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,10 +81,18 @@
       <file leaf-file-name="Ship.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jetbrains/components/Ship.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="13" column="114" lean-forward="false" selection-start-line="13" selection-start-column="114" selection-end-line="13" selection-end-column="114" />
+            <state relative-caret-position="594">
+              <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1090#1091#0" expanded="true" />
+                <element signature="e#1124#1125#0" expanded="true" />
+                <element signature="e#1160#1161#0" expanded="true" />
+                <element signature="e#1193#1194#0" expanded="true" />
+                <element signature="e#3181#3182#0" expanded="true" />
+                <element signature="e#3241#3242#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,6 +122,12 @@
     <findStrings>
       <find>upda</find>
       <find>has</find>
+      <find>tools</find>
+      <find>load</find>
+      <find>leaded</find>
+      <find>loaded</find>
+      <find>set</find>
+      <find>deep</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,11 +147,12 @@
         <option value="$PROJECT_DIR$/src/com/jetbrains/Ship.java" />
         <option value="$PROJECT_DIR$/src/com/jetbrains/Board.java" />
         <option value="$PROJECT_DIR$/src/com/jetbrains/SystemTools.java" />
-        <option value="$PROJECT_DIR$/src/com/jetbrains/tools/SystemTools.java" />
         <option value="$PROJECT_DIR$/src/com/jetbrains/players/Bots.java" />
         <option value="$PROJECT_DIR$/src/com/jetbrains/players/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/jetbrains/components/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/jetbrains/components/Ship.java" />
+        <option value="$PROJECT_DIR$/src/com/jetbrains/tools/SystemTools.java" />
         <option value="$PROJECT_DIR$/src/com/jetbrains/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/jetbrains/components/Board.java" />
       </list>
     </option>
   </component>
@@ -166,44 +183,34 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
+              <item name="BattleShip" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShip" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
+              <item name="BattleShip" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShip" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
+              <item name="BattleShip" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShip" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
+              <item name="BattleShip" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShip" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BattleShipGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BattleShipGame" type="462c0819:PsiDirectoryNode" />
+              <item name="BattleShip" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShip" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
@@ -212,7 +219,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -553,7 +563,56 @@
       <option name="project" value="LOCAL" />
       <updated>1522424743668</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Created the getName method to make sure user will type at least name and surname.&#10;Adapted all the changes made on class players and bots and systemTools&#10;&#10;SystemTools has now all methods static">
+      <created>1522977198794</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977198794</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Changed most attributes of Players to private. Changed them from final to regualr variable, therefore, the setters have become void. &#10;&#10;Created getters for the private attributes.&#10;&#10;&#10;It has been deleted from Bots all the Overrider methods, just keeping the toString one due to the change made on Player">
+      <created>1522977339492</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977339492</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Made all methods static. Now on, no need to instantiate this class">
+      <created>1522977383901</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977383901</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Board has become not mutable. boardStates attribute and Ships attribute has become private and it has been made getters for them">
+      <created>1522977466703</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977466703</updated>
+    </task>
+    <task id="LOCAL-00043" summary="changed class to not mutable. made getters for all private attributes">
+      <created>1522977561971</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977561971</updated>
+    </task>
+    <task id="LOCAL-00044" summary="hidden ship coordinate from users">
+      <created>1522977872317</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977872317</updated>
+    </task>
+    <task id="LOCAL-00045" summary="score of player fixed and the sorting method is sorting by score instead of hits">
+      <created>1522977978314</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1522977978314</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -563,22 +622,22 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7595506" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.994382" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2803437" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17293233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6348315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -619,13 +678,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created update board method. it will still be implemented as soon as the Ship class is created" />
-    <MESSAGE value="Created Ship Class. It is now Complete" />
-    <MESSAGE value="added array of Ships as a board attribute and its robust initialisation." />
-    <MESSAGE value="Added some handy tools for building game class." />
-    <MESSAGE value="sorted some of the classes in a separated package" />
-    <MESSAGE value="Created players package to keep the Player class and Bot class" />
-    <MESSAGE value="finished Bots class" />
     <MESSAGE value="changed the Player toString class" />
     <MESSAGE value="changed the Bot toString class" />
     <MESSAGE value="Still developing game, the array of players and the board attribute is being initialized successfuly." />
@@ -644,11 +696,18 @@
     <MESSAGE value="fixed bug with values for row and collumns that are greater than board dimensions" />
     <MESSAGE value="Game working. Only sorting rank left to be done" />
     <MESSAGE value="imporoved the e-mail regex for robustness" />
-    <option name="LAST_COMMIT_MESSAGE" value="imporoved the e-mail regex for robustness" />
+    <MESSAGE value="Created the getName method to make sure user will type at least name and surname.&#10;Adapted all the changes made on class players and bots and systemTools&#10;&#10;SystemTools has now all methods static" />
+    <MESSAGE value="Changed most attributes of Players to private. Changed them from final to regualr variable, therefore, the setters have become void. &#10;&#10;Created getters for the private attributes.&#10;&#10;&#10;It has been deleted from Bots all the Overrider methods, just keeping the toString one due to the change made on Player" />
+    <MESSAGE value="Made all methods static. Now on, no need to instantiate this class" />
+    <MESSAGE value="Board has become not mutable. boardStates attribute and Ships attribute has become private and it has been made getters for them" />
+    <MESSAGE value="changed class to not mutable. made getters for all private attributes" />
+    <MESSAGE value="hidden ship coordinate from users" />
+    <MESSAGE value="score of player fixed and the sorting method is sorting by score instead of hits" />
+    <option name="LAST_COMMIT_MESSAGE" value="score of player fixed and the sorting method is sorting by score instead of hits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -658,7 +717,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -705,7 +764,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -738,7 +797,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -801,7 +860,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -819,7 +878,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -866,7 +925,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -899,7 +958,7 @@
         <state relative-caret-position="352">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,12 +994,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Bots.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jetbrains/tools/SystemTools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="264">
+          <caret line="94" column="72" lean-forward="false" selection-start-line="94" selection-start-column="72" selection-end-line="94" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/components/Ship.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="102" column="26" lean-forward="false" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#3181#3182#0" expanded="true" />
+            <element signature="e#3241#3242#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,53 +1046,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="19" column="85" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="19" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/players/Bots.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding>
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
-            <element signature="e#1130#1131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jetbrains/components/Ship.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="114" lean-forward="false" selection-start-line="13" selection-start-column="114" selection-end-line="13" selection-end-column="114" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jetbrains/components/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="94" column="74" lean-forward="false" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
+        <state relative-caret-position="572">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5678#5679#0" expanded="true" />
+            <element signature="e#5712#5713#0" expanded="true" />
+            <element signature="e#5744#5745#0" expanded="true" />
+            <element signature="e#5772#5773#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jetbrains/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="322" column="112" lean-forward="false" selection-start-line="322" selection-start-column="112" selection-end-line="322" selection-end-column="112" />
+        <state relative-caret-position="616">
+          <caret line="299" column="36" lean-forward="true" selection-start-line="299" selection-start-column="20" selection-end-line="299" selection-end-column="36" />
           <folding>
-            <element signature="e#10734#10742#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
