@@ -1,6 +1,7 @@
 package com.jetbrains.components;
 
 import com.jetbrains.BoardStates;
+import com.jetbrains.tools.SystemTools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,8 +26,8 @@ public class Board {
 
     public final Integer rows;
     public final Integer cols;
-    public final BoardStates[][] boardStates;
-    public final Ship[] ships;
+    private final BoardStates[][] boardStates;
+    private final Ship[] ships;
 
 
 
@@ -38,6 +39,9 @@ public class Board {
         this.cols = cols;
         this.boardStates = initBoardStates();
         this.ships =  initShips();
+        for(Ship ship : ships){
+            System.out.println(ship);
+        }
     }
 
     /**
@@ -65,65 +69,8 @@ public class Board {
      *
      */
     private Ship[] initShips(){
-        Ship[] tempShip = new Ship[new Random().nextInt(4)+1];// THE BOARD CAN HAVE A MAXIMUN OF 5 SHIPS
 
-
-        /**
-         * This array list bellow will contain all coordenates when new ships are created.
-         * On the creation of Ship, if at least 1 coordinate has already been added to this array list,
-         * it will keep creating until the new ship has not not coordinate contained in the array bellow.
-         * THIS PROCESS WILL AVOID TO CREATE TWO SHIPS IN THE SAME COORDINATE.
-         * CONCEPT USED - LINEAR SEARCH
-         */
-        ArrayList<Integer[]>existingCoordinates = new ArrayList<>();
-
-        // LOOP FOR CREATING INSTANCES IN THE SHIP ARRAY
-
-        for(int i = 0; i < tempShip.length; i++){
-            if(i == 0){
-                tempShip[i] = new Ship(this.rows, this.cols);
-                for(Integer [] coordenate : tempShip[i].coordenates){
-                    existingCoordinates.add(coordenate);
-                }
-            }else{
-                Boolean valid = false;
-                do{
-                    tempShip[i] = new Ship(this.rows, this.cols);
-                    /**
-                     * LINEAR SEARCH COMING INTO PLAY
-                     */
-                    for(Integer [] coordenate : tempShip[i].coordenates){
-                        /**
-                         * IF THIS SHIP POSITION IS ALREADY CONTAINED IN THE EXISTINGCOORDINATE ARRAYLIST
-                         * RESTART THE LOOP UNTIL IT IS NOT CONTAINED
-                         */
-                        if(existingCoordinates.contains(coordenate)){
-                            valid = false;//--->RESTART THE LOOP
-                        }else{
-                            valid = true;
-                        }
-                    }
-                }while(!valid);
-                for(Integer [] coordenate : tempShip[i].coordenates){
-                    existingCoordinates.add(coordenate);
-                }
-
-            }
-
-
-
-            while(existingCoordinates.contains(Arrays.deepToString(tempShip))){
-                tempShip[i] = new Ship(this.rows, this.cols);
-
-            }
-
-
-        }
-
-        System.out.println("Number of the ships created: "+tempShip.length);
-
-
-        return tempShip;
+        return new Ship[]{new Ship(this.rows, this.cols)};
     }
 
 
@@ -234,6 +181,15 @@ public class Board {
         }else{
             return false;
         }
+    }
+
+
+    public BoardStates[][] getBoardStates() {
+        return boardStates;
+    }
+
+    public Ship[] getShips() {
+        return ships;
     }
 }
 
