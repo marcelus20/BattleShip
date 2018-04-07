@@ -5,9 +5,10 @@ import com.jetbrains.components.Board;
 import com.jetbrains.players.Bots;
 import com.jetbrains.players.Player;
 import com.jetbrains.tools.SystemTools;
+import com.jetbrains.utils.Coordinate;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -85,7 +86,10 @@ public class Main{
                      * If current player is instance of Bots, means that the computer will generate random
                      * values for rows and cols.
                      */
-                    if(!(players.get(i) instanceof Player)){
+                    if(!(players.get(i) instanceof Bots)){
+                        System.out.println("| _ | : not chosen coordinate - | * | : No ship, just water - | H | : Ship coordinate");
+
+                        //System.out.println("Number of Ships to defeat: "+this.board.getShips().size());
                         System.out.println("Enter the coordinate");
 
                         input = SystemTools.getInput("(x,y)",
@@ -152,16 +156,17 @@ public class Main{
                 }while(!validRoworCol);
 
 
+
                 System.out.println(players.get(i).name +" chooses coordinate ("+row+","+col+")\n");
 
 
+                Coordinate chosenCoordinate = players.get(i).choosesRowAndColumn(row, col);
 
-                Integer[] chosenCoordinate = players.get(i).choosesRowAndColumn(row, col);
 
                 /**
                  * Updating board with the chosen coordinates
                  */
-                this.board.updateBoard(chosenCoordinate);
+                this.board.updateBoardStates(chosenCoordinate);
 
                 /**
                  * This if statement will take care of scoring players based on their misses and hits
@@ -184,7 +189,7 @@ public class Main{
                 }
 
 
-                //SystemTools.SystemPause();
+                SystemTools.SystemPause();
 
                 /**
                  * printing once more the board
@@ -217,7 +222,7 @@ public class Main{
              * if a ship has length of 3 and the board has 3 ships, then the total of ships coordenates are 9.
              * Once discoveredShips variables reaches value of 9, gae is finished.
              */
-            if(this.board.getShips().length*this.board.getShips()[0].getLength() == discoveredShips){
+            if(this.board.getShips().size()*this.board.getShips().get(0).getLength() == discoveredShips){
 
                 isFinished = true;//ONCE THIS IS TRUE, GAME IS FINISHED
                 //BREAK THE LOOP TO KEEP GO STRAIGHT AWAY TO THE RANK
@@ -243,7 +248,7 @@ public class Main{
          * Player object is by its hits attribute. as Programmed at
          * Player class (com.jetbrains.components.Player.CompareTo)
          */
-        Collections.sort(this.players);
+        Collections.sort(this.players, Collections.reverseOrder()); // DESCENDING ORDER
 
 
 
@@ -285,7 +290,7 @@ public class Main{
      */
     private Board setUpBoard(){
 
-        SystemTools.printTabledArray("SETTING UP BOARD:");
+        //SystemTools.printTabledArray("SETTING UP BOARD:");
         /**
          * ASKING USER TO INPUT THE AMOUNT OF ROWS AND COLS
          */
@@ -294,12 +299,12 @@ public class Main{
         );
 
         final Integer cols = Integer.parseInt(
-                SystemTools.getInput("Type the number of columns", "[1][0-9]|20", "Type numbers between 10 and 20!")
+               SystemTools.getInput("Type the number of columns", "[1][0-9]|20", "Type numbers between 10 and 20!")
         );
 
         //RETURNING THE BOARD WITH THE DIMENSIONS ABOVE INPUTED BY THE USER.
         SystemTools.printTabledArray("BOARD CREATED AND LOADED");
-        return new Board(row, cols);
+        return new Board(row, cols).initBoard();
     }
 
     /**
@@ -361,8 +366,8 @@ public class Main{
 
         for(int i = 0; i < amountOfPlayers; i++){
             System.out.println("Setting up player "+String.valueOf(i+1));
-            final String name = getName();
-            final Integer age = getAge();
+            final String name = getInputName();
+            final Integer age = getInputAge();
             final String eMail = SystemTools.getInput("your Email: ",
                     "[a-zA-Z0-9]+[._a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]*[a-zA-Z]*@[a-zA-Z0-9]{2,8}+[.]+[a-zA-Z.]{2,6}",
                     "Invalid email.");
@@ -372,7 +377,27 @@ public class Main{
         return tempPlayers;
     }
 
-    private String getName(){
+
+    /**
+     * OVERLOADING METHOD JUST USED FOR TESTING PURPOSES.
+     * @param state
+     * @return
+     */
+    private ArrayList<Player> setUpPlayers(boolean state){
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(new Player("Felipe", 25, "g"));
+        players.add(new Player("Felipe", 25, "g"));
+        players.add(new Player("Felipe", 25, "g"));
+        players.add(new Player("Felipe", 25, "g"));
+        return players;
+    }
+
+    /**
+     * Helper method for settUp player
+     * @return
+     */
+
+    private String getInputName(){
         String name = "";
         String[] nameArr;
         do{
@@ -395,7 +420,7 @@ public class Main{
      * Method for validating player age:
      * @return age - integer between range 12 and 99.
      */
-    private Integer getAge(){
+    private Integer getInputAge(){
         Integer age;
 
         do{

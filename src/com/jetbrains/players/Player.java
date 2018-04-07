@@ -1,6 +1,7 @@
 package com.jetbrains.players;
 
-import com.jetbrains.tools.SystemTools;
+import com.jetbrains.utils.Coordinate;
+
 
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 
@@ -105,11 +106,25 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
      * @param col: the col in the line
      * @return the coordenate as an Array
      */
-    public Integer[] choosesRowAndColumn(final Integer row, final Integer col){
+    public Coordinate choosesRowAndColumn(final Integer row, final Integer col){
         //RETURNING THE COORDENATE (ARRAY OF ROWS AND COLUMNS)
-        return new Integer[]{row, col};
+        return Coordinate.coordinate(row, col);
     }
 
+
+
+    /**
+     * This method will arrange the array of Players object in descending order.
+     * Once again, this is an override from Comparable interface.
+     * This is possible only because I have declared this class implements Comparable.
+     * @param comparePlayer
+     * @return
+     */
+    @Override
+    public int compareTo(Player comparePlayer) {
+        return score.compareTo(comparePlayer.score);
+
+    }
 
     /**
      * This is the toString method. It will just display all the value of the attributes when asked
@@ -133,23 +148,5 @@ public class Player implements Comparable<Player>{//--> implementing and Interfa
     }
 
 
-    /**
-     * This method will arrange the array of Players object in descending order.
-     * Once again, this is an override from Comparable interface.
-     * This is possible only because I have declared this class implements Comparable.
-     * @param comparePlayer
-     * @return CompareHits - this.hits
-     */
-    @Override
-    public int compareTo(Player comparePlayer) {
 
-        if(this.hits == comparePlayer.score){
-            return 0;
-        }else if(this.hits < comparePlayer.score){
-            return 1;
-        }else{
-            return -1;
-        }
-
-    }
 }

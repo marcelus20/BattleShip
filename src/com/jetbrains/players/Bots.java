@@ -1,7 +1,5 @@
 package com.jetbrains.players;
 
-import com.jetbrains.tools.SystemTools;
-
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 
 public class Bots extends Player{
@@ -13,19 +11,14 @@ public class Bots extends Player{
      * @param name
      */
     public Bots(final String name) {
-        super(name, null, null);
-    }
-
-    private Bots(final String name, final Integer hits, final Integer miss, final Integer attempts){
-        super(name, null, null, hits, miss, attempts);
-
+        super(name, 0, "");
     }
 
 
     @Override
     public String toString() {
-        return "***HumanPlayer***" + "\n\n"+
-                "name: " + capitalize(name) + '\n' +
+        return "***Bot Player***" + "\n\n"+
+                "name: " + name + '\n' +
                 "hits: " + hits + '\n'+
                 "miss: " + miss + '\n' +
                 "attempts: " + attempts+'\n'+

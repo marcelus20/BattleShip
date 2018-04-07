@@ -1,17 +1,15 @@
 package com.jetbrains.tools;
 
-import com.jetbrains.components.Ship;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Random;
 
 /**
- * This class is a collection of useful tools for building the game. This class will have methods for getting user input,
- * game pausing and other tools.
+ * This class is a collection of useful tools for building the Game. This class will have methods for getting user input,
+ * Game pausing and other tools.
  */
 
 public class SystemTools {
@@ -42,7 +40,7 @@ public class SystemTools {
     }
 
     /**
-     * method for pausing game
+     * method for pausing Game
      */
     public static void SystemPause(){
         getInput("Press enter to continue.","","");
@@ -66,16 +64,12 @@ public class SystemTools {
         printTabledArray(new String[]{str});
     }
 
-    private Integer getSizeOfBiggestArrayElement(final String[] arr){
-        Integer biggest = 0;
-        for(String element : arr){
-            if(element.length()> biggest){
-                biggest = element.length();
-            }
-        }
-        return biggest;
-    }
-
+     /**
+     * This function gets a string and copy it the amount of times specified by the times parameter
+     * @param str
+     * @param times
+     * @return
+     */
     public static String strMultiply(final String str, final Integer times){
         String text = "";
         for(int i = 0; i < times; i++){
@@ -103,32 +97,17 @@ public class SystemTools {
     }
 
 
-    public static Boolean hasComunCoordinate(Ship a, Ship b){
-
-        for(int i = 0; i < a.getLength(); i++){
-            for(int j = 0; j < b.getLength(); j++){
-                if (a.getCoordenates()[i][0] == b.getCoordenates()[i][0] && a.getCoordenates()[j][1] == b.getCoordenates()[j][1]){
-
-                    return true;
-                }
-            }
-        }
-
-        return false;
+    /**
+     * A nicer, cooler and quicker way of creating random numbers with a bound parameter!
+     * @param bound
+     * @return
+     */
+    public static Integer genRandInt(final Integer bound){
+        return new Random().nextInt(bound);
     }
 
-    public static Boolean hasComunCoordinate(Ship ship , ArrayList<Integer[]> coordinates){
 
-       for(int i = 0; i < ship.getLength(); i++){
-           for(int j = 0; j < coordinates.size(); j++){
-               if(Arrays.equals(ship.getCoordenates()[i], coordinates.get(j))){
-                   return true;
-               }
-           }
-       }
 
-        return false;
-    }
 
 
 }
